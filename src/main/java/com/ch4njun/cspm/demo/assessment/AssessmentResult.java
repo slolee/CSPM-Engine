@@ -1,12 +1,11 @@
 package com.ch4njun.cspm.demo.assessment;
 
+import com.ch4njun.cspm.demo.history.History;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
@@ -17,11 +16,12 @@ public class AssessmentResult {
     @GeneratedValue
     private int id;
 
-    private int history_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private History history;
 
     private String service;
 
-    private int index;
+    private int chk_index;
 
     private String result;
 
