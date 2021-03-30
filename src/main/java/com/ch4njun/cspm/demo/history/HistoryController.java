@@ -23,7 +23,8 @@ public class HistoryController {
     @DeleteMapping("")
     public void deleteHistories(@RequestBody HistoryDeleteRequestBody body) {
         for (String historyId : body.getHistoriesId()) {
-            System.out.println(historyId);
+            if (historyRepository.findHistoryByHistoryId(historyId) == null)
+                continue;
             historyRepository.deleteHistoryByHistoryId(historyId);
         }
     }

@@ -1,6 +1,7 @@
 package com.ch4njun.cspm.demo.exeception;
 
 import com.ch4njun.cspm.demo.assessment.AssessmentResultNotFoundException;
+import com.ch4njun.cspm.demo.history.HistoryAlreadyExistsException;
 import com.ch4njun.cspm.demo.history.HistoryNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,13 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
     @ExceptionHandler(HistoryNotFoundException.class)
     public final ResponseEntity<Object> handleHistoryNotFoundException(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(HistoryAlreadyExistsException.class)
+    public final ResponseEntity<Object> handleHistoryAlreadyExistsException(Exception ex, WebRequest request) {
         ExceptionResponse exceptionResponse =
                 new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);

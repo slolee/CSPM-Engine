@@ -1,6 +1,7 @@
 package com.ch4njun.cspm.demo.assessment;
 
 import com.ch4njun.cspm.demo.history.History;
+import com.ch4njun.cspm.demo.history.HistoryAlreadyExistsException;
 import com.ch4njun.cspm.demo.history.HistoryNotFoundException;
 import com.ch4njun.cspm.demo.history.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,6 @@ public class AssessmentResultController {
             else
                 assessmentResults = assessmentResultRepository.findAssessmentResultsByHistoryAndResult(history, result);
         }
-
         return assessmentResults;
     }
 
@@ -58,6 +58,10 @@ public class AssessmentResultController {
 
     @PostMapping("")
     public void run(@RequestBody AssessmentResultPostRequestBody body) {
+        if (historyRepository.findHistoryByHistoryId(body.getHistoryId()) != null) {
+            throw new HistoryAlreadyExistsException(String.format("History ID[%s] already exists", body.getHistoryId()));
+        }
+
         History history = new History(body.getHistoryId(), "running");
         historyRepository.save(history);
 

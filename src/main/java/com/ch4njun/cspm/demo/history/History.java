@@ -28,7 +28,7 @@ public class History {
 
     private String status;
 
-    @OneToMany(mappedBy = "history", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "history", cascade = {CascadeType.ALL})
     @JsonIgnore
     private List<AssessmentResult> assessmentResults;
 }
