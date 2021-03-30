@@ -23,12 +23,15 @@ public class AssessmentResultController {
     @GetMapping("")
     public List<AssessmentResult> retrieveAssessmentResults(@RequestParam(required = false) String historyId,
                                                             @RequestParam(required = false) String resourceId,
-                                                            @RequestParam String result) {
+                                                            @RequestParam(required = false) String result) {
         List<AssessmentResult> assessmentResults = null;
         if (historyId == null && resourceId == null) {
-            assessmentResults = assessmentResultRepository.findAssessmentResultsByResult(result);
+            if (result == null)
+                assessmentResults = assessmentResultRepository.findAll();
+            else
+                assessmentResults = assessmentResultRepository.findAssessmentResultsByResult(result);
         }else if (historyId == null) {
-            if (result.equals("A"))
+            if (result == null)
                 assessmentResults = assessmentResultRepository.findAssessmentResultsByResourceId(resourceId);
             else
                 assessmentResults = assessmentResultRepository.findAssessmentResultsByResourceIdAndResult(resourceId, result);
@@ -38,7 +41,7 @@ public class AssessmentResultController {
                 throw new HistoryNotFoundException(String.format("History ID[%s] not found", historyId));
             }
 
-            if (result.equals("A"))
+            if (result == null)
                 assessmentResults = assessmentResultRepository.findAssessmentResultsByHistory(history);
             else
                 assessmentResults = assessmentResultRepository.findAssessmentResultsByHistoryAndResult(history, result);
