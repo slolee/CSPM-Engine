@@ -18,11 +18,11 @@ public class Resource {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String account_id;
+    private String accountId;
 
     private String service;
 
-    private String resource_id;
+    private String resourceId;
 
     private String tag;
 }

@@ -5,4 +5,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface HistoryRepository extends JpaRepository<History, Integer> {
+    History findHistoryByHistoryId(String historyId);
+    void deleteHistoryByHistoryId(String historyId);
 }

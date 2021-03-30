@@ -6,10 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Data
@@ -17,17 +14,21 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 public class History {
-    public History(int history_id, String status) {
-        this.history_id = history_id;
+    public History(String historyId, String status) {
+        this.historyId = historyId;
         this.status = status;
     }
 
     @Id
-    private int history_id;
+    @GeneratedValue
+    private int id;
+
+    @Column(unique = true)
+    private String historyId;
 
     private String status;
 
-    @OneToMany(mappedBy = "history")
+    @OneToMany(mappedBy = "history", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JsonIgnore
-    private List<AssessmentResult> assessment_results;
+    private List<AssessmentResult> assessmentResults;
 }

@@ -1,6 +1,7 @@
 package com.ch4njun.cspm.demo.assessment;
 
 import com.ch4njun.cspm.demo.history.History;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,19 +17,19 @@ public class AssessmentResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private History history;
 
     private String service;
 
-    private int chk_index;
+    private int chkIndex;
 
-    private String resource_id;
+    private String resourceId;
 
     private String result;
 
     @Lob
-    private String raw_data;
+    private String rawData;
 
     private boolean interview;
 

@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AssessmentResultRequestBody {
-    private int history_id;
-    private String access_key;
-    private String secret_key;
-    private String region_name;
+public class AssessmentResultPostRequestBody {
+    private String historyId;
+    private String accessKey;
+    private String secretKey;
+    private String regionName;
     private String[] services;
 }
