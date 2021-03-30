@@ -1,4 +1,4 @@
-from Common.data import low_data, AWS_CURRENT_ID
+from Common.data import low_data
 from Common.client import *
 from Common.utils import *
 from Common.db_profile import *
@@ -183,7 +183,7 @@ class IAM:
         data = {'cli': [], 'raw_data': [], 'summary': []}
 
         administrator_access = [policy for policy in low_data.policies_only_attached if policy['PolicyName'] == 'AdministratorAccess']
-        list_entities_for_policy = iam_client.list_entities_for_policy(PolicyArn=administrator_access[0]['Arn'])
+        list_entities_for_policy = client.iam_client.list_entities_for_policy(PolicyArn=administrator_access[0]['Arn'])
         append_data(data, 'aws iam list-entities-for-policy --policy-arn arn:aws:iam::aws:policy/AdministratorAccess',
                     {'PolicyUsers': list_entities_for_policy['PolicyUsers'], 'PolicyGroups': list_entities_for_policy['PolicyGroups'], 'PolicyRoles': list_entities_for_policy['PolicyRoles']})
 
@@ -524,7 +524,7 @@ class IAM:
 
                 active_count = 0
                 for active_access_key in active_access_keys:
-                    access_key_last_used = iam_client.get_access_key_last_used(AccessKeyId=active_access_key['AccessKeyId'])
+                    access_key_last_used = client.iam_client.get_access_key_last_used(AccessKeyId=active_access_key['AccessKeyId'])
                     append_data(data, 'aws iam get-access-key-last-used --access-key-id=' + active_access_key['AccessKeyId'], {'UserName': access_key_last_used['UserName'],
                                 'AccessKeyLastUsed': {'Region': access_key_last_used['AccessKeyLastUsed']['Region'], 'ServiceName': access_key_last_used['AccessKeyLastUsed']['ServiceName'],
                                                       'LastUsedDate': str(access_key_last_used['AccessKeyLastUsed']['LastUsedDate'])}})
@@ -589,7 +589,7 @@ class IAM:
             check = 'Y'
             data = {'cli': [], 'raw_data': [], 'summary': []}
 
-            get_group = iam_client.get_paginator('get_group').paginate(GroupName=group['GroupName'])
+            get_group = client.iam_client.get_paginator('get_group').paginate(GroupName=group['GroupName'])
             users_in_group = [group_user for group_info in get_group for group_user in group_info['Users']]
             append_data(data, 'aws iam get-group --group-name ' + group['GroupName'] + ' --query \"{Users:Users[*].{UserName:UserName, UserId:UserId}}\"',
                         {'Users': [{'UserName': user_in_group['UserName'], 'UserId': user_in_group['UserId']} for user_in_group in users_in_group]})
@@ -620,7 +620,7 @@ class IAM:
         aws_cloudtrail_full_access = list(filter(lambda policy: policy['PolicyName'] == 'AWSCloudTrail_FullAccess', low_data.policies_only_attached))
         summary = ''
         if aws_cloudtrail_full_access:
-            list_entities_for_policy = iam_client.list_entities_for_policy(PolicyArn=aws_cloudtrail_full_access[0]['Arn'])
+            list_entities_for_policy = client.iam_client.list_entities_for_policy(PolicyArn=aws_cloudtrail_full_access[0]['Arn'])
             append_data(data, 'aws iam list-entries-for-policy --policy-arn ' + aws_cloudtrail_full_access[0]['Arn'],
                         {'PolicyGroups': list_entities_for_policy['PolicyGroups'], 'PolicyUsers': list_entities_for_policy['PolicyUsers'], 'PolicyRoles': list_entities_for_policy['PolicyRoles']})
             if list_entities_for_policy['PolicyGroups']:
@@ -646,7 +646,7 @@ class IAM:
 
             append_data(data, 'aws iam list-policies --scope Local --query \"Policies[*].{PolicyName:PolicyName, PolicyId:PolicyId, DefaultVersionId:DefaultVersionId, Arn:Arn}\"',
                         {'PolicyName': policy['PolicyName'], 'PolicyId': policy['PolicyId'], 'DefaultVersionId': policy['DefaultVersionId'], 'Arn':policy['Arn']})
-            get_policy_version = iam_client.get_policy_version(PolicyArn=policy['Arn'], VersionId=policy['DefaultVersionId'])
+            get_policy_version = client.iam_client.get_policy_version(PolicyArn=policy['Arn'], VersionId=policy['DefaultVersionId'])
             append_data(data, 'aws iam get-policy-version --policy-arn ' + policy['Arn'] + ' --version-id ' + policy['DefaultVersionId'] + ' --query \"PolicyVersion.{VersionId:VersionId, Document:Document}\"',
                         {'VersionId': get_policy_version['PolicyVersion']['VersionId'], 'Document': get_policy_version['PolicyVersion']['Document']})
 
@@ -672,7 +672,7 @@ class IAM:
             append_data(data, 'aws iam list-policies --scope Local --query \"Policies[*].{PolicyName:PolicyName, PolicyId:PolicyId, DefaultVersionId:DefaultVersionId, Arn:Arn}\"',
                         {'PolicyName': policy['PolicyName'], 'PolicyId': policy['PolicyId'], 'DefaultVersionId': policy['DefaultVersionId'], 'Arn': policy['Arn']})
 
-            get_policy_version = iam_client.get_policy_version(PolicyArn=policy['Arn'], VersionId=policy['DefaultVersionId'])
+            get_policy_version = client.iam_client.get_policy_version(PolicyArn=policy['Arn'], VersionId=policy['DefaultVersionId'])
             append_data(data, 'aws iam get-policy-version --policy-arn ' + policy['Arn'] + ' --version-id ' + policy['DefaultVersionId'] + ' --query \"PolicyVersion.{VersionId:VersionId, Document:Document}\"',
                         {'VersionId': get_policy_version['PolicyVersion']['VersionId'], 'Document': get_policy_version['PolicyVersion']['Document']})
 
@@ -694,7 +694,7 @@ class IAM:
             data = {'cli': [], 'raw_data': [], 'summary': []}
             append_data(data, 'aws iam list-user-policies --user-name ' + user['UserName'], {'PolicyNames': low_data.user_policies[user['UserName']]})
             for user_policy in low_data.user_policies[user['UserName']]:
-                statements = iam_client.get_user_policy(UserName=user['UserName'], PolicyName=user_policy)
+                statements = client.iam_client.get_user_policy(UserName=user['UserName'], PolicyName=user_policy)
                 append_data(data, 'aws iam get-user-policy --user-name ' + user['UserName'] + ' --policy-name ' + user_policy,
                             {'UserName': statements['UserName'], 'PolicyName': statements['PolicyName'], 'PolicyDocument': statements['PolicyDocument']})
                 if [statement for statement in statements['PolicyDocument']['Statement'] if statement['Effect'] == 'Allow' and 'NotAction' in statement]:
@@ -710,7 +710,7 @@ class IAM:
             data = {'cli': [], 'raw_data': [], 'summary': []}
             append_data(data, 'aws iam list-group-policies --group-name ' + group['GroupName'], {'PolicyNames': low_data.group_policies[group['GroupName']]})
             for group_policy in low_data.group_policies[group['GroupName']]:
-                statements = iam_client.get_group_policy(GroupName=group['GroupName'], PolicyName=group_policy)
+                statements = client.iam_client.get_group_policy(GroupName=group['GroupName'], PolicyName=group_policy)
                 append_data(data, 'aws iam get-group-policy --group-name ' + group['GroupName'] + ' --policy-name ' + group_policy,
                             {'GroupName': statements['GroupName'], 'PolicyName': statements['PolicyName'], 'PolicyDocument': statements['PolicyDocument']})
                 if [statement for statement in statements['PolicyDocument']['Statement'] if statement['Effect'] == 'Allow' and 'NotAction' in statement]:
@@ -726,7 +726,7 @@ class IAM:
             data = {'cli': [], 'raw_data': [], 'summary': []}
             append_data(data, 'aws iam list-role-policies --role-name ' + role['RoleName'], {'PolicyNames': low_data.role_policies[role['RoleName']]})
             for role_policy in low_data.role_policies[role['RoleName']]:
-                statements = iam_client.get_role_policy(RoleName=role['RoleName'], PolicyName=role_policy)
+                statements = client.iam_client.get_role_policy(RoleName=role['RoleName'], PolicyName=role_policy)
                 append_data(data, 'aws iam get-role-policy --role-name ' + role['RoleName'] + ' --policy-name ' + role_policy,
                             {'RoleName': statements['RoleName'], 'PolicyName': statements['PolicyName'], 'PolicyDocument': statements['PolicyDocument']})
                 if [statement for statement in statements['PolicyDocument']['Statement'] if statement['Effect'] == 'Allow' and 'NotAction' in statement]:
@@ -745,7 +745,7 @@ class IAM:
 
         aws_support_access = [policy for policy in low_data.policies_only_attached if policy['PolicyName'] == 'AWSSupportAccess']
         if aws_support_access:
-            list_entities_for_policy = iam_client.list_entities_for_policy(PolicyArn=aws_support_access[0]['Arn'])
+            list_entities_for_policy = client.iam_client.list_entities_for_policy(PolicyArn=aws_support_access[0]['Arn'])
             append_data(data, 'aws iam list-entries-for-policy --policy-arn ' + aws_support_access[0]['Arn'] + ' --query \"{PolicyRoles:PolicyRoles}\"',
                         {'PolicyRoles': list_entities_for_policy['PolicyRoles']})
             if not list_entities_for_policy['PolicyRoles']:

@@ -1,4 +1,4 @@
-from Common.data import low_data, AWS_CURRENT_ID
+from Common.data import low_data
 from Common.client import *
 from Common.db_profile import *
 from Common.utils import *
@@ -48,17 +48,17 @@ class Lambda:
                         {'Functions': [{'FunctionName': function['FunctionName'], 'FunctionArn': function['FunctionArn'], 'Role': function['Role']} for function in low_data.functions]})
 
             role_name = function['Role'].split('/')[-1]
-            list_attached_role_policies = iam_client.get_paginator('list_attached_role_policies').paginate(RoleName=role_name)
+            list_attached_role_policies = client.iam_client.get_paginator('list_attached_role_policies').paginate(RoleName=role_name)
             attached_role_policies = [attached_role_policy for attached_role_policies in list_attached_role_policies for attached_role_policy in attached_role_policies['AttachedPolicies']]
             append_data(data, 'aws iam list-attached-role-policies --role-name ' + role_name, {'AttachedPolicies': attached_role_policies})
 
             for attached_role_policy in attached_role_policies:
-                list_policy_versions = iam_client.get_paginator('list_policy_versions').paginate(PolicyArn=attached_role_policy['PolicyArn'])
+                list_policy_versions = client.iam_client.get_paginator('list_policy_versions').paginate(PolicyArn=attached_role_policy['PolicyArn'])
                 default_policy_versions = [policy_version for policy_versions in list_policy_versions for policy_version in policy_versions['Versions'] if policy_version['IsDefaultVersion']]
                 append_data(data, 'aws iam list-policy-versions --policy-arn ' + attached_role_policy['PolicyArn'] + ' --query \"{Versions:Versions.{VersionId:VersionId, IsDefaultVersion:IsDefaultVersion}}\"',
                             {'Versions': {'VersionId': default_policy_versions[0]['VersionId'], 'IsDefaultVersion': default_policy_versions[0]['IsDefaultVersion']}})
 
-                get_policy_version = iam_client.get_policy_version(PolicyArn=attached_role_policy['PolicyArn'], VersionId=default_policy_versions[0]['VersionId'])
+                get_policy_version = client.iam_client.get_policy_version(PolicyArn=attached_role_policy['PolicyArn'], VersionId=default_policy_versions[0]['VersionId'])
                 append_data(data, 'aws iam get-policy-version --policy-arn ' + attached_role_policy['PolicyArn'] + ' --version-id ' + default_policy_versions[0]['VersionId'] +
                             ' --query \"{PolicyVersion:PolicyVersion.{Document:Document, VersionId:VersionId}}\"',
                             {'PolicyVersion': {'Document': get_policy_version['PolicyVersion']['Document'], 'VersionId': get_policy_version['PolicyVersion']['VersionId']}})

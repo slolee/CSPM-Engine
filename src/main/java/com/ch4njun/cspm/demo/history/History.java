@@ -17,6 +17,11 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 public class History {
+    public History(int history_id, String status) {
+        this.history_id = history_id;
+        this.status = status;
+    }
+
     @Id
     private int history_id;
 

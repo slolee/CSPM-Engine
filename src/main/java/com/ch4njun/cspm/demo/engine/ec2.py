@@ -1,4 +1,4 @@
-from Common.data import low_data, AWS_CURRENT_ID
+from Common.data import low_data
 from Common.client import *
 from Common.utils import *
 from Common.db_profile import *
@@ -241,7 +241,7 @@ class EC2:
                                                            'LaunchTemplate': auto_scaling_instance['LaunchTemplate'] if 'LaunchTemplate' in auto_scaling_instance else 'null'}
                                                           for auto_scaling_instance in low_data.auto_scaling_instances]})
 
-                    describe_instance_attribute = ec2_client.describe_instance_attribute(InstanceId=instance['InstanceId'], Attribute='disableApiTermination')
+                    describe_instance_attribute = client.ec2_client.describe_instance_attribute(InstanceId=instance['InstanceId'], Attribute='disableApiTermination')
                     append_data(data, 'aws ec2 describe-instance-attribute --instance-id ' + instance['InstanceId'] + ' --attribute disableApiTermination',
                                 {'DisableApiTermination': {'Value': describe_instance_attribute['DisableApiTermination']}, 'InstanceId': instance['InstanceId']})
                     if not describe_instance_attribute['DisableApiTermination']['Value']:

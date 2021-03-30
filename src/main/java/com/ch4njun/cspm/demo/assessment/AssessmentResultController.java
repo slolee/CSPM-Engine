@@ -1,9 +1,12 @@
 package com.ch4njun.cspm.demo.assessment;
 
+import com.ch4njun.cspm.demo.history.History;
+import com.ch4njun.cspm.demo.history.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.zeroturnaround.exec.ProcessExecutor;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,6 +15,8 @@ import java.util.List;
 public class AssessmentResultController {
     @Autowired
     private AssessmentResultRepository assessmentResultRepository;
+    @Autowired
+    private HistoryRepository historyRepository;
 
     @GetMapping("")
     public List<AssessmentResult> retrieveAssessmentResults(@RequestParam int history_id, @RequestParam String check) {
@@ -25,32 +30,22 @@ public class AssessmentResultController {
         System.out.println(body.getHistory_id());
         System.out.println(body.getAccess_key());
         System.out.println(body.getSecret_key());
+        System.out.println(body.getRegion_name());
         System.out.println(Arrays.toString(body.getServices()));
 
-//        Runtime rt = Runtime.getRuntime();
-//        String file = "C:\\Windows\\System32\\calc.exe";
-//        Process pro;
-//        try {
-//            pro = rt.exec(file);
-//            pro.waitFor();
-//        }catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        History history = new History(body.getHistory_id(), "running");
+        historyRepository.save(history);
 
-//        String pythonPath = "C:\\Users\\박찬준\\IdeaProjects\\cspm-engine-service\\src\\main\\java\\com\\ch4njun\\cspm\\demo\\engine\\test.py";
-//        String python = "D:\\Install\\Python3";
-//        try {
-//            ProcessBuilder pb = new ProcessBuilder(python + "\\python.exe", pythonPath);
-//            pb.start();
-//        }catch (Exception e) {
-//            System.out.println(e.getMessage());
-//        }
-
-
-        String pythonPath = "C:\\Users\\박찬준\\IdeaProjects\\cspm-engine-service\\src\\main\\java\\com\\ch4njun\\cspm\\demo\\engine\\test.py";
+        String pythonPath = "src\\main\\java\\com\\ch4njun\\cspm\\demo\\engine\\check_main.py";
         String python = "D:\\Install\\Python3";
         try {
-            new ProcessExecutor().command(python + "\\python.exe", pythonPath).execute();
+            String output = new ProcessExecutor().command(python + "\\python.exe", pythonPath, String.valueOf(body.getHistory_id()),
+                    String.valueOf(body.getAccess_key()), String.valueOf(body.getSecret_key()), String.valueOf(body.getRegion_name()),
+                    Arrays.toString(body.getServices()))
+                    .readOutput(true)
+                    .execute()
+                    .outputString("EUC-KR");
+            System.out.println(output);
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }

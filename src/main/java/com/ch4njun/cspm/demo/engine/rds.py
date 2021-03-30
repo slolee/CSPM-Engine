@@ -1,4 +1,4 @@
-from Common.data import low_data, AWS_CURRENT_ID
+from Common.data import low_data
 from Common.client import *
 from Common.utils import *
 from Common.db_profile import *
@@ -186,7 +186,7 @@ class RDS:
                 data = {'cli': [], 'raw_data': [], 'summary': []}
 
                 try:
-                    get_metric_statistics = cloudwatch_client.get_metric_statistics(MetricName='FreeStorageSpace', StartTime=db_instance['InstanceCreateTime'],
+                    get_metric_statistics = client.cloudwatch_client.get_metric_statistics(MetricName='FreeStorageSpace', StartTime=db_instance['InstanceCreateTime'],
                                                                                 EndTime=datetime.datetime.now(), Period=3600, Namespace='AWS/RDS', Statistics=['Maximum'],
                                                                                 Dimensions=[{'Name': 'DBInstanceIdentifier', 'Value': db_instance['DBInstanceIdentifier']}])
                     threshold = (db_instance['AllocatedStorage'] * 1024 * 1024 * 1024) * 0.1
@@ -254,7 +254,7 @@ class RDS:
                 data = {'cli': [], 'raw_data': [], 'summary': []}
 
                 try:
-                    get_metric_statistics = cloudwatch_client.get_metric_statistics(MetricName='CPUUtilization', StartTime=db_instance['InstanceCreateTime'],
+                    get_metric_statistics = client.cloudwatch_client.get_metric_statistics(MetricName='CPUUtilization', StartTime=db_instance['InstanceCreateTime'],
                                                                                     EndTime=datetime.datetime.now(), Period=86400, Namespace='AWS/RDS', Statistics=['Average'],
                                                                                     Dimensions=[{'Name': 'DBInstanceIdentifier', 'Value': db_instance['DBInstanceIdentifier']}])
                     check_metric_statistics = [metric_statistic for metric_statistic in get_metric_statistics['Datapoints'] if metric_statistic['Average'] > 90]
@@ -355,7 +355,7 @@ class RDS:
 
                 flag = False
                 for db_option_group in db_instance['OptionGroupMemberships']:
-                    describe_option_groups = rds_client.get_paginator('describe_option_groups').paginate(OptionGroupName=db_option_group['OptionGroupName'])
+                    describe_option_groups = client.rds_client.get_paginator('describe_option_groups').paginate(OptionGroupName=db_option_group['OptionGroupName'])
                     options = [option_group for option_groups in describe_option_groups for option_group in option_groups['OptionGroupsList']][0]['Options']
 
                     append_data(data, 'aws rds describe-option-groups --option-group-name ' + db_option_group['OptionGroupName'] +
@@ -391,7 +391,7 @@ class RDS:
 
                 flag = False
                 for db_option_group in db_instance['OptionGroupMemberships']:
-                    describe_option_groups = rds_client.get_paginator('describe_option_groups').paginate(OptionGroupName=db_option_group['OptionGroupName'])
+                    describe_option_groups = client.rds_client.get_paginator('describe_option_groups').paginate(OptionGroupName=db_option_group['OptionGroupName'])
                     options = [option_group for option_groups in describe_option_groups for option_group in option_groups['OptionGroupsList']][0]['Options']
 
                     append_data(data, 'aws rds describe-option-groups --option-group-name ' + db_option_group['OptionGroupName'] +

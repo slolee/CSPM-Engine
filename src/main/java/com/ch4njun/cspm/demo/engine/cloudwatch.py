@@ -1,5 +1,4 @@
-from Common.data import low_data, AWS_CURRENT_ID
-from Common.client import *
+from Common.data import low_data
 from Common.db_profile import *
 from Common.utils import *
 import boto3, json, datetime

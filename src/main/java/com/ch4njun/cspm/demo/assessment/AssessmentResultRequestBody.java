@@ -11,5 +11,6 @@ public class AssessmentResultRequestBody {
     private int history_id;
     private String access_key;
     private String secret_key;
+    private String region_name;
     private String[] services;
 }

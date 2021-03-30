@@ -1,4 +1,4 @@
-from Common.data import low_data, AWS_CURRENT_ID
+from Common.data import low_data
 from Common.client import *
 from Common.db_profile import execute_insert_sql
 from Common.utils import *
@@ -235,13 +235,13 @@ class VPC:
         print('[VPC_010] AWS Organization 구성원 이외의 계정과 연결된 VPC 피어링 연결이 존재하는지 확인하시오.')
 
         try:
-            list_accounts = organizations_client.get_paginator('list_accounts').paginate()
+            list_accounts = client.organizations_client.get_paginator('list_accounts').paginate()
             accounts = [account['Id'] for accounts in list_accounts for account in accounts['Accounts']]
         except ClientError as e:  # 여기오면 N/A 처리로
             return
 
         if not accounts:
-            accounts.append(AWS_CURRENT_ID['Account'])
+            accounts.append(client.AWS_CURRENT_ID['Account'])
 
         for vpc_peering_connection in low_data.vpc_peering_connections:
             check = 'Y'

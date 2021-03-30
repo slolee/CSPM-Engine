@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Entity
 public class AssessmentResult {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -23,11 +23,15 @@ public class AssessmentResult {
 
     private int chk_index;
 
+    private String resource_id;
+
     private String result;
 
+    @Lob
     private String raw_data;
 
     private boolean interview;
 
+    @Lob
     private String interview_content;
 }

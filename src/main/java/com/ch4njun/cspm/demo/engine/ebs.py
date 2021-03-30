@@ -1,4 +1,4 @@
-from Common.data import low_data, AWS_CURRENT_ID
+from Common.data import low_data
 from Common.client import *
 from Common.db_profile import *
 from Common.utils import *
@@ -25,7 +25,7 @@ class EBS:
             check = 'Y'
             data = {'cli': [], 'raw_data': [], 'summary': []}
 
-            describe_snapshot_attribute = ec2_client.describe_snapshot_attribute(SnapshotId=snapshot['SnapshotId'], Attribute='createVolumePermission')
+            describe_snapshot_attribute = client.ec2_client.describe_snapshot_attribute(SnapshotId=snapshot['SnapshotId'], Attribute='createVolumePermission')
             snapshot_create_volume_permission = describe_snapshot_attribute['CreateVolumePermissions']
 
             append_data(data, 'aws ec2 describe-snapshot-attribute --snapshot-id ' + snapshot['SnapshotId'] + ' --attribute createVolumePermission',
@@ -104,7 +104,7 @@ class EBS:
             check = 'Y'
             data = {'cli': [], 'raw_data': [], 'summary': []}
 
-            append_data(data, 'aws ec2 describe-snapshots --owner-ids ' + AWS_CURRENT_ID['Account'] + ' --filter Name=snapshot-id,Values=' + snapshot['SnapshotId'] +\
+            append_data(data, 'aws ec2 describe-snapshots --owner-ids ' + client.AWS_CURRENT_ID['Account'] + ' --filter Name=snapshot-id,Values=' + snapshot['SnapshotId'] +\
                         ' --query \"Snapshots[*].{SnapshotId:SnapshotId, Description:Description, Encrypted:Encrypted}\"',
                         {'SnapshotId': snapshot['SnapshotId'], 'Description': snapshot['Description'], 'Encrypted': snapshot['Encrypted']})
             if not snapshot['Encrypted']:

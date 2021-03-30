@@ -1,4 +1,4 @@
-from Common.data import low_data, AWS_CURRENT_ID
+from Common.data import low_data
 from Common.client import *
 from Common.db_profile import *
 from Common.utils import *
@@ -82,7 +82,7 @@ class KMS:
             check = 'Y'
             data = {'cli': [], 'raw_data': [], 'summary': []}
 
-            get_key_rotation_status = kms_client.get_key_rotation_status(KeyId=key)
+            get_key_rotation_status = client.kms_client.get_key_rotation_status(KeyId=key)
             append_data(data, 'aws kms get-key-rotation-status --key-id ' + key, {'KeyRotationEnabled': get_key_rotation_status['KeyRotationEnabled']})
             if not get_key_rotation_status['KeyRotationEnabled']:
                 append_summary(data, key + ' Amazon KMS 마스터 키의 키 순환 기능이 비활성화되어 있습니다.')
@@ -99,7 +99,7 @@ class KMS:
         data = {'cli': [], 'raw_data': [], 'summary': []}
 
         for key in low_data.customer_keys_id:
-            list_resource_tags = kms_client.list_resource_tags(KeyId=key)
+            list_resource_tags = client.kms_client.list_resource_tags(KeyId=key)
             append_data(data, 'aws kms list-resource-tags --key-id ' + key + ' --query \"{Tags:Tags}\"',
                         {'KeyId': key, 'Tags': list_resource_tags['Tags']})
 
@@ -115,7 +115,7 @@ class KMS:
         data = {'cli': [], 'raw_data': [], 'summary': []}
 
         for key in low_data.customer_keys_id:
-            list_resource_tags = kms_client.list_resource_tags(KeyId=key)
+            list_resource_tags = client.kms_client.list_resource_tags(KeyId=key)
             append_data(data, 'aws kms list-resource-tags --key-id ' + key + ' --query \"{Tags:Tags}\"',
                         {'KeyId': key, 'Tags': list_resource_tags['Tags']})
 
@@ -131,7 +131,7 @@ class KMS:
         data = {'cli': [], 'raw_data': [], 'summary': []}
 
         for key in low_data.customer_keys_id:
-            list_resource_tags = kms_client.list_resource_tags(KeyId=key)
+            list_resource_tags = client.kms_client.list_resource_tags(KeyId=key)
             append_data(data, 'aws kms list-resource-tags --key-id ' + key + ' --query \"{Tags:Tags}\"',
                         {'KeyId': key, 'Tags': list_resource_tags['Tags']})
 

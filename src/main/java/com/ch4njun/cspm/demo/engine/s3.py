@@ -1,4 +1,4 @@
-from Common.data import low_data, AWS_CURRENT_ID
+from Common.data import low_data
 from Common.client import *
 from Common.db_profile import *
 from Common.utils import *
@@ -153,7 +153,7 @@ class S3:
             data = {'cli': [], 'raw_data': [], 'summary': []}
 
             try:
-                get_bucket_website = s3_client.get_bucket_website(Bucket=bucket['Name'])
+                get_bucket_website = client.s3_client.get_bucket_website(Bucket=bucket['Name'])
                 append_data(data, 'aws s3api get-bucket-website --bucket' + bucket['Name'],
                             {'IndexDocument': get_bucket_website['IndexDocument']})
             except ClientError as e:
