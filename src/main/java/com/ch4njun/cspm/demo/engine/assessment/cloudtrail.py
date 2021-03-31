@@ -38,7 +38,7 @@ class CloudTrail:
             for trail in logging_trails:
                 append_data(data, 'aws cloudtrail get-trail-status --name ' + trail['TrailARN'] + ' --query \"{IsLogging:IsLogging}\"',
                             {'IsLogging': low_data.trail_status[trail['TrailARN']]['IsLogging']})
-        execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '001', 'CloudTrail', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '001', 'CloudTrail', 'CloudTrail', check, str(data)))
         print()
 
     def cloudtrail_002(self):
@@ -54,7 +54,7 @@ class CloudTrail:
 
                 if len(data['summary']) > 0:
                     check = 'N'
-                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '002', trail['Name'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '002', trail['Name'], trail['Name'], check, str(data)))
         print()
 
     def cloudtrail_003(self):
@@ -79,7 +79,7 @@ class CloudTrail:
 
                 if len(data['summary']) > 0:
                     check = 'N'
-                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '003', trail['Name'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '003', trail['Name'], trail['Name'], check, str(data)))
         print()
 
     def cloudtrail_004(self):
@@ -95,7 +95,7 @@ class CloudTrail:
 
                 if len(data['summary']) > 0:
                     check = 'N'
-                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '004', trail['Name'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '004', trail['Name'], trail['Name'], check, str(data)))
         print()
 
     def cloudtrail_005(self):
@@ -112,7 +112,7 @@ class CloudTrail:
 
                 if len(data['summary']) > 0:
                     check = 'N'
-                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '005', trail['Name'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '005', trail['Name'], trail['Name'], check, str(data)))
         print()
 
     def cloudtrail_006(self):
@@ -139,7 +139,7 @@ class CloudTrail:
 
                 if len(data['summary']) > 0:
                     check = 'N'
-                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '006', trail['Name'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '006', trail['Name'], trail['Name'], check, str(data)))
         print()
 
     def cloudtrail_007(self):
@@ -206,7 +206,7 @@ class CloudTrail:
 
                 if len(data['summary']) > 0:
                     check = 'N'
-                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '007', trail['Name'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '007', trail['Name'], trail['Name'], check, str(data)))
         print()
 
     def cloudtrail_008(self):
@@ -242,7 +242,7 @@ class CloudTrail:
 
                 if len(data['summary']) > 0:
                     check = 'N'
-                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '008', trail['Name'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '008', trail['Name'], trail['Name'], check, str(data)))
         print()
 
     def cloudtrail_009(self):
@@ -259,7 +259,7 @@ class CloudTrail:
 
                 if len(data['summary']) > 0:
                     check = 'N'
-                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '009', trail['Name'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '009', trail['Name'], trail['Name'], check, str(data)))
         print()
 
     def cloudtrail_010(self):
@@ -276,5 +276,5 @@ class CloudTrail:
 
                 if len(data['summary']) > 0:
                     check = 'N'
-                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '010', trail['Name'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudTrail', '010', trail['Name'], trail['Name'], check, str(data)))
         print()

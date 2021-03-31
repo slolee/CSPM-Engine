@@ -1,7 +1,4 @@
 import sys
-from Common.data import low_data
-from Common.db_profile import *
-from Common.client import Client
 from iam import *
 from vpc import *
 from cloudtrail import *
@@ -13,11 +10,9 @@ from ebs import *
 from cloudfront import *
 from kms import *
 from myLambda import *
-import boto3
 
 if __name__ == '__main__':
     arguments = sys.argv
-    print(arguments)
 
     client.init_client(arguments[2], arguments[3], arguments[4])
     low_data.init_diagnosis_id(arguments[1])

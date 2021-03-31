@@ -24,6 +24,8 @@ public class AssessmentResult {
 
     private int chkIndex;
 
+    private String resourceName;
+
     private String resourceId;
 
     private String result;

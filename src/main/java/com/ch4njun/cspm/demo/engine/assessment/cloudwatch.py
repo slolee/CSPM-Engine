@@ -77,7 +77,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '001', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '001', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_002(self):
@@ -98,7 +98,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '002', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '002', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_003(self):
@@ -119,7 +119,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '003', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '003', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_004(self):
@@ -140,7 +140,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '004', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '004', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_005(self):
@@ -178,7 +178,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '005', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '005', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_006(self):
@@ -199,7 +199,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '006', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '006', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_007(self):
@@ -222,7 +222,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '007', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '007', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_008(self):
@@ -244,7 +244,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '008', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '008', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_009(self):
@@ -266,7 +266,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '009', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '009', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_010(self):
@@ -288,7 +288,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '010', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '010', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_011(self):
@@ -310,7 +310,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '011', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '011', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_012(self):
@@ -332,7 +332,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '012', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '012', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_013(self):
@@ -355,7 +355,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '013', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '013', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_014(self):
@@ -380,7 +380,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '014', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '014', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_015(self):
@@ -402,7 +402,7 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '015', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '015', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 
     def cloudwatch_016(self):
@@ -428,6 +428,6 @@ class CloudWatch:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'CloudWatch', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '016', 'CloudWatch', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'CloudWatch', '016', 'CloudWatch', 'CloudWatch', check, str(data)))
         print()
 

@@ -30,21 +30,30 @@ public class AssessmentResultController {
                 assessmentResults = assessmentResultRepository.findAll();
             else
                 assessmentResults = assessmentResultRepository.findAssessmentResultsByResult(result);
-        }else if (historyId == null) {
-            if (result == null)
-                assessmentResults = assessmentResultRepository.findAssessmentResultsByResourceId(resourceId);
-            else
-                assessmentResults = assessmentResultRepository.findAssessmentResultsByResourceIdAndResult(resourceId, result);
-        }else if (resourceId == null) {
-            History history = historyRepository.findHistoryByHistoryId(historyId);
-            if (history == null) {
-                throw new HistoryNotFoundException(String.format("History ID[%s] not found", historyId));
-            }
+        }else {
+            if (historyId == null) {
+                if (result == null)
+                    assessmentResults = assessmentResultRepository.findAssessmentResultsByResourceId(resourceId);
+                else
+                    assessmentResults = assessmentResultRepository.findAssessmentResultsByResourceIdAndResult(resourceId, result);
+            }else {
+                History history = historyRepository.findHistoryByHistoryId(historyId);
+                if (history == null) {
+                    throw new HistoryNotFoundException(String.format("History ID[%s] not found", historyId));
+                }
 
-            if (result == null)
-                assessmentResults = assessmentResultRepository.findAssessmentResultsByHistory(history);
-            else
-                assessmentResults = assessmentResultRepository.findAssessmentResultsByHistoryAndResult(history, result);
+                if (resourceId == null) {
+                    if (result == null)
+                        assessmentResults = assessmentResultRepository.findAssessmentResultsByHistory(history);
+                    else
+                        assessmentResults = assessmentResultRepository.findAssessmentResultsByHistoryAndResult(history, result);
+                }else {
+                    if (result == null)
+                        assessmentResults = assessmentResultRepository.findAssessmentResultsByHistoryAndResourceId(history, resourceId);
+                    else
+                        assessmentResults = assessmentResultRepository.findAssessmentResultsByHistoryAndResourceIdAndResult(history, resourceId, result);
+                }
+            }
         }
         return assessmentResults;
     }
@@ -72,7 +81,7 @@ public class AssessmentResultController {
             new Thread() {
                 public void run() {
                     try {
-                        String pythonPath = "src\\main\\java\\com\\ch4njun\\cspm\\demo\\engine\\check_main.py";
+                        String pythonPath = "src\\main\\java\\com\\ch4njun\\cspm\\demo\\engine\\assessment\\check_main.py";
                         String python = "D:\\Install\\Python3";
                         History history = historyRepository.findHistoryByHistoryId(body.getHistoryId());
 
@@ -97,7 +106,17 @@ public class AssessmentResultController {
     }
 
     @PutMapping("/{id}")
-    public AssessmentResult interview(@RequestBody AssessmentResult assessmentResult) {
-        return assessmentResultRepository.save(assessmentResult);
+    public AssessmentResult interview(@PathVariable int id, @RequestBody AssessmentResult assessmentResult) {
+        Optional<AssessmentResult> assessmentResult_original = assessmentResultRepository.findById(id);
+        if (assessmentResult_original.isEmpty()) {
+            return null;
+        }
+
+        AssessmentResult assessmentResult_after = assessmentResult_original.get();
+        assessmentResult_after.setResult(assessmentResult.getResult());
+        assessmentResult_after.setInterview(assessmentResult.isInterview());
+        assessmentResult_after.setInterview_content(assessmentResult.getInterview_content());
+
+        return assessmentResultRepository.save(assessmentResult_after);
     }
 }

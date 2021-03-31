@@ -51,7 +51,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '001', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '001', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_002(self):
@@ -68,7 +68,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_snapshot['DBSnapshotIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '002', db_snapshot['DBSnapshotIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '002', db_snapshot['DBSnapshotIdentifier'], db_snapshot['DBSnapshotArn'], check, str(data)))
         print()
 
     def rds_003(self):
@@ -83,7 +83,7 @@ class RDS:
         if len(data['summary']) > 0:
             check = 'N'
         print(check, data, 'RDS', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'RDS', '003', 'RDS', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'RDS', '003', 'RDS', 'RDS', check, str(data)))
         print()
 
     def rds_004(self):
@@ -102,7 +102,7 @@ class RDS:
         else:
             append_data(data, 'aws rds describe-event-subscriptions', {'EventSubscriptionList': db_security_group_event})
         print(check, data, 'RDS', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'RDS', '004', 'RDS', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'RDS', '004', 'RDS', 'RDS', check, str(data)))
         print()
 
     def rds_005(self):
@@ -121,7 +121,7 @@ class RDS:
         else:
             append_data(data, 'aws rds describe-event-subscriptions', {'EventSubscriptionList': db_instance_event})
         print(check, data, 'RDS', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'RDS', '005', 'RDS', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'RDS', '005', 'RDS', 'RDS', check, str(data)))
         print()
 
     def rds_006(self):
@@ -139,7 +139,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '006', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '006', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_007(self):
@@ -157,7 +157,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '007', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '007', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_008(self):
@@ -175,7 +175,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '008', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '008', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_009(self):
@@ -210,7 +210,7 @@ class RDS:
                     check = '?'
 
                 print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'RDS', '009', db_instance['DBInstanceIdentifier'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'RDS', '009', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_010(self):
@@ -228,7 +228,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '010', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '010', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_011(self):
@@ -243,7 +243,7 @@ class RDS:
             append_summary(data, db_instance['DBInstanceIdentifier'] + ' 인스턴스에 연결된 보안그룹 ' + str([vpc_security_group['VpcSecurityGroupId'] for vpc_security_group in db_instance['VpcSecurityGroups']]) + ' 가 Data-tier를 위한 보안그룹인지 확인하시오.')
 
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '011', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '011', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_012(self):
@@ -276,7 +276,7 @@ class RDS:
                     append_summary(data, '해당 항목을 확인하려면 \"GetMetricStatistics\" 권한을 부여해야 합니다.')
                     check = '?'
                 print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'RDS', '012', db_instance['DBInstanceIdentifier'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'RDS', '012', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_013(self):
@@ -307,7 +307,7 @@ class RDS:
                     append_summary(data, db_instance['DBInstanceIdentifier'] + ' 인스턴스의 암호를 자동으로 교체하도록 AWS Secret Manager를 구성하지 않았습니다.')
                     check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '013', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '013', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     # aurora-mysql, mysql, mariadb, oracle-ee, oracle-se, oracle-se1, oracle-se2, sqlserver-ee, sqlserver-web, sqlserver-se, sqlserver-ex : admin
@@ -327,7 +327,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '014', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '014', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_015(self):
@@ -375,7 +375,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '015', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '015', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_016(self):
@@ -452,7 +452,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '016', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '016', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_017(self):
@@ -509,7 +509,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '014', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '014', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_018(self):
@@ -527,7 +527,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '018', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '018', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_019(self):
@@ -546,7 +546,7 @@ class RDS:
                 if len(data['summary']) > 0:
                     check = 'N'
                 print(check, data, db_cluster['DBClusterIdentifier'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'RDS', '019', db_cluster['DBClusterIdentifier'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'RDS', '019', db_cluster['DBClusterIdentifier'], db_cluster['DBClusterArn'], check, str(data)))
         print()
 
     def rds_020(self):
@@ -593,7 +593,7 @@ class RDS:
                     check = 'N'
 
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '020', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '020', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_021(self):
@@ -611,7 +611,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '021', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '021', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     # 기존 22번 이전 세대의 인스턴스 클래스가 엄청엄청많고, 엔진마다 다른데 어떻게 처리할지...
@@ -632,7 +632,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '022', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '022', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_023(self):
@@ -654,7 +654,7 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_instance['DBInstanceIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '023', db_instance['DBInstanceIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '023', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
         print()
 
     def rds_024(self):
@@ -671,6 +671,6 @@ class RDS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, db_snapshot['DBSnapshotIdentifier'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'RDS', '024', db_snapshot['DBSnapshotIdentifier'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'RDS', '024', db_snapshot['DBSnapshotIdentifier'], db_snapshot['DBSnapshotArn'], check, str(data)))
         print()
 

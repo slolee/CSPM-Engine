@@ -76,8 +76,8 @@ class IAM:
 
         if len(data['summary']) > 0:
             check = 'N'
-        print(check, data, root_credential['user'], sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '001', root_credential['user'], check, str(data)))
+        print(check, data, root_credential['user'], root_credential['arn'], sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '001', root_credential['user'], root_credential['arn'], check, str(data)))
         print()
 
     def iam_002(self):
@@ -95,8 +95,8 @@ class IAM:
 
         if len(data['summary']) > 0:
             check = 'N'
-        print(check, data, root_credential['user'], sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '002', root_credential['user'], check, str(data)))
+        print(check, data, root_credential['user'], root_credential['arn'], sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '002', root_credential['user'], root_credential['arn'], check, str(data)))
         print()
 
     def iam_003(self):
@@ -117,8 +117,8 @@ class IAM:
 
         if len(data['summary']) > 0:
             check = 'N'
-        print(check, data, root_credential['user'], sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '003', root_credential['user'], check, str(data)))
+        print(check, data, root_credential['user'], root_credential['arn'], sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '003', root_credential['user'], root_credential['arn'], check, str(data)))
         print()
 
     def iam_004(self):
@@ -136,8 +136,8 @@ class IAM:
 
         if len(data['summary']) > 0:
             check = 'N'
-        print(check, data, root_credential['user'], sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '004', root_credential['user'], check, str(data)))
+        print(check, data, root_credential['user'], root_credential['arn'], sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '004', root_credential['user'], root_credential['arn'], check, str(data)))
         print()
 
     def iam_005(self):
@@ -154,8 +154,8 @@ class IAM:
 
         if len(data['summary']) > 0:
             check = 'N'
-        print(check, data, root_credential['user'], sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '005', root_credential['user'], check, str(data)))
+        print(check, data, root_credential['user'], root_credential['arn'], sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '005', root_credential['user'], root_credential['arn'], check, str(data)))
         print()
 
     def iam_006(self):
@@ -173,8 +173,8 @@ class IAM:
 
         if len(data['summary']) > 0:
             check = 'N'
-        print(check, data, 'IAM', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '006', 'IAM', check, str(data)))
+        print(check, data, 'IAM', 'IAM', sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '006', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_007(self):
@@ -200,8 +200,8 @@ class IAM:
             append_summary(data, 'AdministratorAccess 관리형 정책이 부여된 IAM 개체는 다음과 같습니다.')
             append_summary(data, summary)
             append_summary(data, '올바른 사용자에게 부여된 권한인지 확인하시오.')
-        print(check, data, 'IAM', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '007', 'IAM', check, str(data)))
+        print(check, data, 'IAM', 'IAM', sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '007', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_008(self):
@@ -209,8 +209,8 @@ class IAM:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, 'AWS 계정 설정에 대체 연락처 세부 정보가 설정되어있는지 AWS Management Console을 통해 확인하시오.')
-        print(check, data, 'IAM', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '008', 'IAM', check, str(data)))
+        print(check, data, 'IAM', 'IAM', sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '008', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_009(self):
@@ -218,8 +218,8 @@ class IAM:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, 'AWS 계정 설정에 보안 챌린지 질문 구성이 설정되어있는지 AWS Management Console을 통해 확인하시오.')
-        print(check, data, 'IAM', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '009', 'IAM', check, str(data)))
+        print(check, data, 'IAM', 'IAM', sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '009', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_010(self):
@@ -233,8 +233,8 @@ class IAM:
 
         if len(data['summary']) > 0:
             check = 'N'
-        print(check, data, 'IAM', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '010', 'IAM', check, str(data)))
+        print(check, data, 'IAM', 'IAM', sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '010', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_011(self):
@@ -257,8 +257,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, 'IAM', sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '011', 'IAM', check, str(data)))
+            print(check, data, 'IAM', 'IAM', sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '011', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_012(self):
@@ -275,8 +275,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, 'IAM', sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '012', 'IAM', check, str(data)))
+            print(check, data, 'IAM', 'IAM', sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '012', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_013(self):
@@ -292,8 +292,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, 'IAM', sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '013', 'IAM', check, str(data)))
+            print(check, data, 'IAM', 'IAM', sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '013', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_014(self):
@@ -312,8 +312,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, 'IAM', sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '014', 'IAM', check, str(data)))
+            print(check, data, 'IAM', 'IAM', sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '014', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_016(self):
@@ -336,8 +336,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, credential['user'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '016', credential['user'], check, str(data)))
+            print(check, data, credential['user'], credential['arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '016', credential['user'], credential['arn'], check, str(data)))
         print()
 
     def iam_017(self):
@@ -374,8 +374,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, credential['user'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '017', credential['user'], check, str(data)))
+            print(check, data, credential['user'], credential['arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '017', credential['user'], credential['arn'], check, str(data)))
         print()
 
     def iam_018(self):
@@ -397,8 +397,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, credential['user'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '018', credential['user'], check, str(data)))
+            print(check, data, credential['user'], credential['arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '018', credential['user'], credential['arn'], check, str(data)))
         print()
 
     def iam_019(self):
@@ -419,8 +419,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, credential['user'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '019', credential['user'], check, str(data)))
+            print(check, data, credential['user'], credential['arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '019', credential['user'], credential['arn'], check, str(data)))
         print()
 
     def iam_020(self):
@@ -436,8 +436,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, credential['user'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '020', credential['user'], check, str(data)))
+            print(check, data, credential['user'], credential['arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '020', credential['user'], credential['arn'], check, str(data)))
         print()
 
     def iam_021(self):
@@ -454,8 +454,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, user['UserName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '021', user['UserName'], check, str(data)))
+            print(check, data, user['UserName'], user['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '021', user['UserName'], user['Arn'], check, str(data)))
         print()
 
     def iam_022(self):
@@ -471,8 +471,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, user['UserName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '022', user['UserName'], check, str(data)))
+            print(check, data, user['UserName'], user['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '022', user['UserName'], user['Arn'], check, str(data)))
         print()
 
     def iam_023(self):
@@ -490,8 +490,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, credential['user'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '023', credential['user'], check, str(data)))
+            print(check, data, credential['user'], credential['arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '023', credential['user'], credential['arn'], check, str(data)))
         print()
 
     def iam_024(self):
@@ -506,8 +506,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, user['UserName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '024', user['UserName'], check, str(data)))
+            print(check, data, user['UserName'], user['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '024', user['UserName'], user['Arn'], check, str(data)))
         print()
 
     def iam_025(self):
@@ -536,8 +536,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, user['UserName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '025', user['UserName'], check, str(data)))
+            print(check, data, user['UserName'], user['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '025', user['UserName'], user['Arn'], check, str(data)))
         print()
 
     def iam_026(self):
@@ -553,8 +553,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, user['UserName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '026', user['UserName'], check, str(data)))
+            print(check, data, user['UserName'], user['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '026', user['UserName'], user['Arn'], check, str(data)))
 
         for group in low_data.groups:
             check = 'Y'
@@ -566,8 +566,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, group['GroupName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '026', group['GroupName'], check, str(data)))
+            print(check, data, group['GroupName'], group['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '026', group['GroupName'], group['Arn'], check, str(data)))
 
         for role in low_data.roles:
             check = 'Y'
@@ -579,8 +579,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, role['RoleName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '026', role['RoleName'], check, str(data)))
+            print(check, data, role['RoleName'], role['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '026', role['RoleName'], role['Arn'], check, str(data)))
         print()
 
     def iam_027(self):
@@ -598,8 +598,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, group['GroupName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '027', group['GroupName'], check, str(data)))
+            print(check, data, group['GroupName'], group['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '027', group['GroupName'], group['Arn'], check, str(data)))
         print()
 
     def iam_028(self):
@@ -634,8 +634,8 @@ class IAM:
             append_summary(data, 'AWSCloudTrail_FullAccess 관리형 정책이 부여된 IAM 개체는 다음과 같습니다.')
             append_summary(data, summary)
             append_summary(data, '올바르게 부여된 권한인지 확인하시오.')
-        print(check, data, 'IAM', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '029', 'IAM', check, str(data)))
+        print(check, data, 'IAM', 'IAM', sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '029', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_030(self):
@@ -659,8 +659,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, policy['PolicyName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '030', policy['PolicyName'], check, str(data)))
+            print(check, data, policy['PolicyName'], policy['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '030', policy['PolicyName'], policy['Arn'], check, str(data)))
         print()
 
     def iam_031(self):
@@ -686,8 +686,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, policy['PolicyName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '031', policy['PolicyName'], check, str(data)))
+            print(check, data, policy['PolicyName'], policy['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '031', policy['PolicyName'], policy['Arn'], check, str(data)))
 
         for user in low_data.users:
             check = 'Y'
@@ -702,8 +702,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, user['UserName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '031', user['UserName'], check, str(data)))
+            print(check, data, user['UserName'], user['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '031', user['UserName'], user['Arn'], check, str(data)))
 
         for group in low_data.groups:
             check = 'Y'
@@ -718,8 +718,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, group['GroupName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '031', group['GroupName'], check, str(data)))
+            print(check, data, group['GroupName'], group['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '031', group['GroupName'], group['Arn'], check, str(data)))
 
         for role in low_data.roles:
             check = 'Y'
@@ -734,8 +734,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, role['RoleName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '031', role['RoleName'], check, str(data)))
+            print(check, data, role['RoleName'], role['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '031', role['RoleName'], role['Arn'], check, str(data)))
         print()
 
     def iam_032(self):
@@ -753,8 +753,8 @@ class IAM:
 
         if len(data['summary']) > 0:
             check = 'N'
-        print(check, data, 'IAM', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'IAM', '032', 'IAM', check, str(data)))
+        print(check, data, 'IAM', 'IAM', sep='\n')
+        execute_insert_sql((low_data.diagnosis_id, 'IAM', '032', 'IAM', 'IAM', check, str(data)))
         print()
 
     def iam_033(self):
@@ -784,8 +784,8 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, server_certificate['ServerCertificateMetadata']['ServerCertificateName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '034', server_certificate['ServerCertificateMetadata']['ServerCertificateName'], check, str(data)))
+            print(check, data, server_certificate['ServerCertificateMetadata']['ServerCertificateName'], server_certificate['ServerCertificateMetadata']['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '034', server_certificate['ServerCertificateMetadata']['ServerCertificateName'], server_certificate['ServerCertificateMetadata']['Arn'], check, str(data)))
         print()
 
     def iam_035(self):
@@ -801,6 +801,6 @@ class IAM:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            print(check, data, server_certificate['ServerCertificateMetadata']['ServerCertificateName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'IAM', '035', server_certificate['ServerCertificateMetadata']['ServerCertificateName'], check, str(data)))
+            print(check, data, server_certificate['ServerCertificateMetadata']['ServerCertificateName'], server_certificate['ServerCertificateMetadata']['Arn'], sep='\n')
+            execute_insert_sql((low_data.diagnosis_id, 'IAM', '035', server_certificate['ServerCertificateMetadata']['ServerCertificateName'], server_certificate['ServerCertificateMetadata']['Arn'], check, str(data)))
         print()

@@ -55,7 +55,7 @@ class VPC:
                 else:
                     append_data(data, 'aws ec2 describe-security-groups --filter Name=group-id,Values=' + security_group['GroupId'] + ' --query \"SecurityGroups[*].{GroupId:GroupId, GroupName:GroupName, IpPermissions:IpPermissions, IpPermissionsEgress:IpPermissionsEgress}\"',
                                 {'GroupId': security_group['GroupId'], 'GroupName': security_group['GroupName'], 'IpPermissions': security_group['IpPermissions'], 'IpPermissionsEgress': security_group['IpPermissionsEgress']})
-                execute_insert_sql((low_data.diagnosis_id, 'VPC', '001', security_group['GroupId'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'VPC', '001', security_group['GroupName'], security_group['GroupId'], check, str(data)))
         print()
 
     def vpc_002(self):
@@ -87,7 +87,7 @@ class VPC:
             else:
                 append_data(data, 'aws ec2 describe-security-groups --filter Name=group-id,Values=' + security_group['GroupId'] + ' --query \"SecurityGroups[*].{GroupId:GroupId, GroupName:GroupName, IpPermissions:IpPermissions, IpPermissionsEgress:IpPermissionsEgress}\"',
                             {'GroupId': security_group['GroupId'], 'GroupName': security_group['GroupName'], 'IpPermissions': security_group['IpPermissions'], 'IpPermissionsEgress': security_group['IpPermissionsEgress']})
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '002', security_group['GroupId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '002', security_group['GroupName'], security_group['GroupId'], check, str(data)))
         print()
 
     def vpc_003(self):
@@ -112,7 +112,7 @@ class VPC:
                         append_summary(data, security_group['GroupId'] + ' 에 0.0.0.0/0 혹은 ::/0 에서 udp ' + str(list(result)) + '번 포트로 액세스하는 것을 허용하는 인바운드 규칙이 존재합니다.')
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '003', security_group['GroupId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '003', security_group['GroupName'], security_group['GroupId'], check, str(data)))
         print()
 
     def vpc_004(self):
@@ -135,7 +135,7 @@ class VPC:
                             append_summary(data, security_group['GroupId'] + ' 에 ::/0 에서 ICMPv6 액세스하는 것을 허용하는 인바운드 규칙이 존재합니다.')
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '004', security_group['GroupId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '004', security_group['GroupName'], security_group['GroupId'], check, str(data)))
         print()
 
     def vpc_005(self):
@@ -151,7 +151,7 @@ class VPC:
                     append_summary(data, security_group['GroupId'] + ' 에 0.0.0.0/0 혹은 ::/0 에 액세스하는 것을 허용하는 아웃바운드 규칙이 존재합니다.')
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '005', security_group['GroupId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '005', security_group['GroupName'], security_group['GroupId'], check, str(data)))
         print()
 
     def vpc_006(self):
@@ -168,7 +168,7 @@ class VPC:
                     append_summary(data, security_group['GroupId'] + ' 에 RFC-1918에 지정된 사설 네트워크망 IP 주소 범위(10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16)에서 액세스하는 것을 허용하는 아웃바운드 규칙이 존재합니다.')
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '006', security_group['GroupId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '006', security_group['GroupName'], security_group['GroupId'], check, str(data)))
         print()
 
     def vpc_007(self):
@@ -185,7 +185,7 @@ class VPC:
                     append_summary(data, '기본 Network ACL에 ' + network_acl['NetworkAclId'] + ' 에 아웃바운드 트래픽을 허용하는 규칙이 존재합니다.')
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '007', network_acl['NetworkAclId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '007', network_acl['NetworkAclId'], network_acl['NetworkAclId'], check, str(data)))
         print()
 
     def vpc_008(self):
@@ -209,7 +209,7 @@ class VPC:
                         append_summary(data, network_acl['NetworkAclId'] + ' 에 모든 포트에 대한 트래픽을 허용하는 아웃바운드 규칙(규칙번호:' + str(entry['RuleNumber']) + ')이 존재합니다.')
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '008', network_acl['NetworkAclId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '008', network_acl['NetworkAclId'], network_acl['NetworkAclId'], check, str(data)))
         print()
 
     def vpc_009(self):
@@ -228,7 +228,7 @@ class VPC:
                     break
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '009', vpc_endpoint['VpcEndpointId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '009', vpc_endpoint['VpcEndpointId'], vpc_endpoint['VpcEndpointId'], check, str(data)))
         print()
 
     def vpc_010(self):
@@ -254,7 +254,7 @@ class VPC:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '010', vpc_peering_connection['VpcPeeringConnectionId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '010', vpc_peering_connection['VpcPeeringConnectionId'], vpc_peering_connection['VpcPeeringConnectionId'], check, str(data)))
         print()
 
     def vpc_011(self):
@@ -269,7 +269,7 @@ class VPC:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '011', vpc['VpcId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '011', vpc['VpcId'], vpc['VpcId'], check, str(data)))
         print()
 
     def vpc_012(self):
@@ -289,7 +289,7 @@ class VPC:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '012', vpn_connection['VpnConnectionId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '012', vpn_connection['VpnConnectionId'], vpn_connection['VpnConnectionId'], check, str(data)))
         print()
 
     def vpc_013(self):
@@ -316,7 +316,7 @@ class VPC:
                     append_summary(data, vpc['VpcId'] + ' 의 NAT Gateway가 2개 이상의 가용영역(AZ)에서 구현되어있지 않습니다.')
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '013', vpc['VpcId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '013', vpc['VpcId'], vpc['VpcId'], check, str(data)))
         print()
 
     def vpc_014(self):
@@ -324,7 +324,7 @@ class VPC:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, '각 Tier를 위한 서브넷을 2개 이상의 가용영역(AZ)에 생성했는지 AWS Management Console을 통해 확인하시오.')
-        execute_insert_sql((low_data.diagnosis_id, 'VPC', '014', 'VPC', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'VPC', '014', 'VPC', 'VPC', check, str(data)))
         print()
 
     def vpc_015(self):
@@ -332,7 +332,7 @@ class VPC:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, 'Public 서브넷(Web-tier ELB)에 연결된 라우팅 테이블에 0.0.0.0/0에서 Internet Gateway로 라우팅하는 규칙이 존재하는지 AWS Management Console을 통해 확인하시오.')
-        execute_insert_sql((low_data.diagnosis_id, 'VPC', '015', 'VPC', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'VPC', '015', 'VPC', 'VPC', check, str(data)))
         print()
 
     def vpc_016(self):
@@ -340,7 +340,7 @@ class VPC:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, 'Private 서브넷(Web-tier, App-tier, Data-tier)에 연결된 라우팅 테이블에 0.0.0.0/0 NAT Gateway로 라우팅하는 규칙이 존재하는지 AWS Management Console을 통해 확인하시오.')
-        execute_insert_sql((low_data.diagnosis_id, 'VPC', '016', 'VPC', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'VPC', '016', 'VPC', 'VPC', check, str(data)))
         print()
 
     def vpc_017(self):
@@ -348,7 +348,7 @@ class VPC:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, 'Web-tier ELB에 연결된 보안그룹이 80(HTTP)/443(HTTPS)포트의 인바운드 트래픽만을 허용하도록 구성되어 있는지 AWS Management Console을 통해 확인하시오.')
-        execute_insert_sql((low_data.diagnosis_id, 'VPC', '017', 'VPC', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'VPC', '017', 'VPC', 'VPC', check, str(data)))
         print()
 
     def vpc_018(self):
@@ -356,7 +356,7 @@ class VPC:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, 'Web-tier에 연결된 보안그룹이 Web-tier ELB에 연결된 보안그룹으로부터의 인바운드 트래픽만을 허용하도록 구성되어 있는지 AWS Management Console을 통해 확인하시오.')
-        execute_insert_sql((low_data.diagnosis_id, 'VPC', '018', 'VPC', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'VPC', '018', 'VPC', 'VPC', check, str(data)))
         print()
 
     def vpc_019(self):
@@ -364,7 +364,7 @@ class VPC:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, 'App-tier ELB에 연결된 보안그룹이 Web-tier에 연결된 보안그룹으로부터의 인바운드 트래픽만을 허용하도록 구성되어 있는지 AWS Management Console을 통해 확인하시오.')
-        execute_insert_sql((low_data.diagnosis_id, 'VPC', '019', 'VPC', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'VPC', '019', 'VPC', 'VPC', check, str(data)))
         print()
 
     def vpc_020(self):
@@ -372,7 +372,7 @@ class VPC:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, 'App-tier에 연결된 보안그룹이 App-tier ELB에 연결된 보안그룹으로부터의 인바운드 트래픽만을 허용하도록 구성되어 있는지 AWS Management Console을 통해 확인하시오.')
-        execute_insert_sql((low_data.diagnosis_id, 'VPC', '020', 'VPC', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'VPC', '020', 'VPC', 'VPC', check, str(data)))
         print()
 
     def vpc_021(self):
@@ -380,7 +380,7 @@ class VPC:
         check = '?'
         data = {'cli': [], 'raw_data': [], 'summary': []}
         append_summary(data, 'Data-tier에 연결된 보안그룹이 App-tier에 연결된 보안그룹으로부터의 인바운드 트래픽만을 허용하도록 구성되어 있는지 AWS Management Console을 통해 확인하시오.')
-        execute_insert_sql((low_data.diagnosis_id, 'VPC', '021', 'VPC', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'VPC', '021', 'VPC', 'VPC', check, str(data)))
         print()
 
     def vpc_022(self):
@@ -397,7 +397,7 @@ class VPC:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '022', vpc['VpcId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '022', vpc['VpcId'], vpc['VpcId'], check, str(data)))
         print()
 
     def vpc_023(self):
@@ -414,6 +414,6 @@ class VPC:
 
             if len(data['summary']) > 0:
                 check = 'N'
-            execute_insert_sql((low_data.diagnosis_id, 'VPC', '023', subnet['SubnetId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'VPC', '023', subnet['SubnetId'], subnet['SubnetArn'], check, str(data)))
         print()
 

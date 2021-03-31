@@ -40,7 +40,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, image['ImageId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '001', image['ImageId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '001', image['ImageId'], image['ImageId'], check, str(data)))
         print()
 
     def ec2_002(self):
@@ -71,7 +71,7 @@ class EC2:
                     append_summary(data, instance['InstanceId'] + ' 인스턴스가 공개된 서브넷 ' + instance['SubnetId'] + ' 에서 실행되고 있습니다.')
 
                 print(check, data, instance['InstanceId'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'EC2', '002', instance['InstanceId'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'EC2', '002', instance['InstanceId'], instance['InstanceId'], check, str(data)))
         print()
 
     def ec2_003(self):
@@ -88,7 +88,7 @@ class EC2:
             if len(data['summary']) > 0:
                 append_summary(data, elb['LoadBalancerName'] + ' 이 App-tier ELB 인지 확인하시오.')
             print(check, data,  elb['LoadBalancerName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '003',  elb['LoadBalancerName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '003', elb['LoadBalancerName'], elb['LoadBalancerName'], check, str(data)))
 
         for elbv2 in low_data.load_balancers_v2:
             if elbv2['Type'] == 'application':
@@ -103,7 +103,7 @@ class EC2:
                 if len(data['summary']) > 0:
                     append_summary(data, elbv2['LoadBalancerName'] + ' 이 App-tier ELB 인지 확인하시오.')
                 print(check, data, elbv2['LoadBalancerName'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'EC2', '003', elbv2['LoadBalancerName'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'EC2', '003', elbv2['LoadBalancerName'], elbv2['LoadBalancerArn'], check, str(data)))
         print()
 
     def ec2_004(self):
@@ -121,7 +121,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, instance['InstanceId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '005', instance['InstanceId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '004', instance['InstanceId'], instance['InstanceId'], check, str(data)))
         print()
 
     def ec2_005(self):
@@ -144,7 +144,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, launch_configuration['LaunchConfigurationName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '005', launch_configuration['LaunchConfigurationName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '005', launch_configuration['LaunchConfigurationName'], launch_configuration['LaunchConfigurationARN'], check, str(data)))
         print()
 
     def ec2_006(self):
@@ -162,7 +162,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, instance['InstanceId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '006', instance['InstanceId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '006', instance['InstanceId'], instance['InstanceId'], check, str(data)))
         print()
 
     def ec2_007(self):
@@ -184,7 +184,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data,  launch_configuration['LaunchConfigurationName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '007', launch_configuration['LaunchConfigurationName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '007', launch_configuration['LaunchConfigurationName'], launch_configuration['LaunchConfigurationARN'], check, str(data)))
 
         for launch_template in low_data.launch_templates:
             check = 'Y'
@@ -206,7 +206,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, launch_template['LaunchTemplateName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '007', launch_template['LaunchTemplateName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '007', launch_template['LaunchTemplateName'], launch_template['LaunchTemplateId'], check, str(data)))
         print()
 
     def ec2_008(self):
@@ -224,7 +224,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, instance['InstanceId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '008', instance['InstanceId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '008', instance['InstanceId'], instance['InstanceId'], check, str(data)))
         print()
 
     def ec2_009(self):
@@ -256,7 +256,7 @@ class EC2:
                 if len(data['summary']) > 0:
                     check = 'N'
                 print(check, data, instance['InstanceId'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'EC2', '009', instance['InstanceId'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'EC2', '009', instance['InstanceId'], instance['InstanceId'], check, str(data)))
         print()
 
     def ec2_010(self):
@@ -283,7 +283,7 @@ class EC2:
                 if len(data['summary']) > 0:
                     check = 'N'
                 print(check, data, instance['InstanceId'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'EC2', '010', instance['InstanceId'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'EC2', '010', instance['InstanceId'], instance['InstanceId'], check, str(data)))
         print()
 
     def ec2_011(self):
@@ -298,7 +298,7 @@ class EC2:
                            '각 계층을 위한 보안그룹이 올바르게 연결되어있는지 확인하시오.')
 
             print(check, data, launch_configuration['LaunchConfigurationName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '011', launch_configuration['LaunchConfigurationName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '011', launch_configuration['LaunchConfigurationName'], launch_configuration['LaunchConfigurationArn'], check, str(data)))
         for launch_template in low_data.launch_templates:
             check = '?'
             data = {'cli': [], 'raw_data': [], 'summary': []}
@@ -312,7 +312,7 @@ class EC2:
                            str(low_data.launch_template_versions[launch_template['LaunchTemplateName']][0]['LaunchTemplateData']['SecurityGroupIds']) + ' 이 연결되어 있습니다.\n'
                            '각 계층을 위한 보안그룹이 올바르게 연결되어있는지 확인하시오.')
             print(check, data, launch_template['LaunchTemplateName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '011', launch_template['LaunchTemplateName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '011', launch_template['LaunchTemplateName'], launch_template['LaunchTemplateId'], check, str(data)))
         print()
 
     def ec2_12_util(self, data, security_groups, name):
@@ -350,7 +350,7 @@ class EC2:
             if len(data['summary']) > 0:
                 append_summary(data, elb['LoadBalancerName'] + ' 이 Web-tier ELB가 아닌지 확인하시오.')
             print(check, data,  elb['LoadBalancerName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '012',  elb['LoadBalancerName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '012', elb['LoadBalancerName'], elb['LoadBalancerName'], check, str(data)))
 
         for elbv2 in low_data.load_balancers_v2:
             if elbv2['Type'] == 'application':
@@ -363,7 +363,7 @@ class EC2:
                 if len(data['summary']) > 0:
                     append_summary(data, elbv2['LoadBalancerName'] + ' 이 Web-tier ELB가 아닌지 확인하시오.')
                 print(check, data, elbv2['LoadBalancerName'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'EC2', '012', elbv2['LoadBalancerName'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'EC2', '012', elbv2['LoadBalancerName'], elbv2['LoadBalancerArn'], check, str(data)))
         print()
 
     def ec2_013(self):
@@ -381,7 +381,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, load_balancer['LoadBalancerName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '013', load_balancer['LoadBalancerName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '013', load_balancer['LoadBalancerName'], load_balancer['LoadBalancerName'], check, str(data)))
 
         for load_balancer in low_data.load_balancers_v2:
             check = 'Y'
@@ -397,7 +397,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, load_balancer['LoadBalancerName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '013', load_balancer['LoadBalancerName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '013', load_balancer['LoadBalancerName'], load_balancer['LoadBalancerArn'], check, str(data)))
         print()
 
     def ec2_014(self):
@@ -414,7 +414,7 @@ class EC2:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, image['ImageId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EC2', '014', image['ImageId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EC2', '014', image['ImageId'], image['ImageId'], check, str(data)))
         print()
 
 

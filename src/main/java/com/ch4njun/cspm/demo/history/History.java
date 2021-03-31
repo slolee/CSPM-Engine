@@ -21,6 +21,7 @@ public class History {
 
     @Id
     @GeneratedValue
+    @JsonIgnore
     private int id;
 
     @Column(unique = true)
@@ -28,7 +29,7 @@ public class History {
 
     private String status;
 
-    @OneToMany(mappedBy = "history", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "history", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<AssessmentResult> assessmentResults;
 }

@@ -36,7 +36,7 @@ class EBS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, snapshot['SnapshotId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EBS', '001', snapshot['SnapshotId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EBS', '001', snapshot['SnapshotId'], snapshot['SnapshotId'], check, str(data)))
         print()
 
     def ebs_002(self):
@@ -53,7 +53,7 @@ class EBS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, volume['VolumeId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EBS', '002', volume['VolumeId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EBS', '002', volume['VolumeId'], volume['VolumeId'], check, str(data)))
         print()
 
     def ebs_003(self):
@@ -74,7 +74,7 @@ class EBS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, volume['VolumeId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EBS', '004', volume['VolumeId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EBS', '004', volume['VolumeId'], volume['VolumeId'], check, str(data)))
         print()
 
     def ebs_005(self):
@@ -95,7 +95,7 @@ class EBS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, volume['VolumeId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EBS', '005', volume['VolumeId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EBS', '005', volume['VolumeId'], volume['VolumeId'], check, str(data)))
         print()
 
     def ebs_006(self):
@@ -113,7 +113,7 @@ class EBS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, snapshot['SnapshotId'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'EBS', '006', snapshot['SnapshotId'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'EBS', '006', snapshot['SnapshotId'], snapshot['SnapshotId'], check, str(data)))
         print()
 
     def ebs_007(self):
@@ -134,7 +134,7 @@ class EBS:
             if len(data['summary']) > 0:
                 check = 'N'
         print(check, data, "EBS", sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'EBS', '007', "EBS", check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'EBS', '007', 'EBS', 'EBS', check, str(data)))
         print()
 
 

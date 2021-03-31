@@ -38,7 +38,7 @@ class KMS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, key, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'KMS', '001', key, check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'KMS', '001', key, low_data.keys[key]['Arn'], check, str(data)))
         print()
 
     def kms_002(self):
@@ -53,7 +53,7 @@ class KMS:
             append_summary(data, key + ' Amazon KMS 마스터 키의 정책에 허용된 계정목록은 ' + str(principals) + ' 입니다.\n해당 목록이 신뢰할 수 있는 계정인지 확인하시오.')
 
             print(check, data, key, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'KMS', '002', key, check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'KMS', '002', key, low_data.keys[key]['Arn'], check, str(data)))
         print()
 
     def kms_003(self):
@@ -73,7 +73,7 @@ class KMS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, key, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'KMS', '003', key, check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'KMS', '003', key, low_data.keys[key]['Arn'], check, str(data)))
         print()
 
     def kms_004(self):
@@ -90,7 +90,7 @@ class KMS:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, key, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'KMS', '004', key, check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'KMS', '004', key, low_data.keys[key]['Arn'], check, str(data)))
         print()
 
     def kms_005(self):
@@ -106,7 +106,7 @@ class KMS:
         if len(data['raw_data']) > 0:
             append_summary(data, 'Amazon KMS 고객 마스터 키(CMK) 중에서 웹 tier에 대해서 생성된 것이 존재하는지 확인하시오.')
         print(check, data, 'KMS', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'KMS', '005', 'KMS', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'KMS', '005', 'KMS', 'KMS', check, str(data)))
         print()
 
     def kms_006(self):
@@ -122,7 +122,7 @@ class KMS:
         if len(data['raw_data']) > 0:
             append_summary(data, 'Amazon KMS 고객 마스터 키(CMK) 중에서 앱 tier에 대해서 생성된 것이 존재하는지 확인하시오.')
         print(check, data, 'KMS', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'KMS', '006', 'KMS', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'KMS', '006', 'KMS', 'KMS', check, str(data)))
         print()
 
     def kms_007(self):
@@ -138,5 +138,5 @@ class KMS:
         if len(data['raw_data']) > 0:
             append_summary(data, 'Amazon KMS 고객 마스터 키(CMK) 중에서 데이터 tier에 대해서 생성된 것이 존재하는지 확인하시오.')
         print(check, data, 'KMS', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'KMS', '007', 'KMS', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'KMS', '007', 'KMS', 'KMS', check, str(data)))
         print()

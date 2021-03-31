@@ -10,5 +10,5 @@ conn = pymysql.connect(host=host, user=user, password=passwd, db=db, charset=cha
 cur = conn.cursor()
 
 def execute_insert_sql(diagnosis_result):
-    cur.execute('insert into assessment_result(history_id, service, chk_index, resource_id, result, raw_data) values(%s, %s, %s, %s, %s, %s)', diagnosis_result)
+    cur.execute('insert into assessment_result(history_id, service, chk_index, resource_name, resource_id, result, raw_data) values(%s, %s, %s, %s, %s, %s, %s)', diagnosis_result)
     conn.commit()

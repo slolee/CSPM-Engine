@@ -36,7 +36,7 @@ class Lambda:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, function['FunctionName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '001', function['FunctionName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '001', function['FunctionName'], function['FunctionArn'], check, str(data)))
         print()
 
     def lambda_002(self):
@@ -74,7 +74,7 @@ class Lambda:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, function['FunctionName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '002', function['FunctionName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '002', function['FunctionName'], function['FunctionArn'], check, str(data)))
         print()
 
     def lambda_003(self):
@@ -102,7 +102,7 @@ class Lambda:
                             {'Error': 'An error occurred (ResourceNotFoundException) when calling the GetPolicy operation'})
 
             print(check, data, function['FunctionName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '003', function['FunctionName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '003', function['FunctionName'], function['FunctionArn'], check, str(data)))
         print()
 
     def lambda_004(self):
@@ -129,7 +129,7 @@ class Lambda:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, function['FunctionName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '004', function['FunctionName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '004', function['FunctionName'], function['FunctionArn'], check, str(data)))
         print()
 
     def lambda_005(self):
@@ -142,7 +142,7 @@ class Lambda:
         append_summary(data, '각 Lambda 함수의 런타임 환경이 최신 버전의 런타임 환경을 사용하는지 확인하시오.')
 
         print(check, data, 'Lambda', sep='\n')
-        execute_insert_sql((low_data.diagnosis_id, 'Lambda', '005', 'Lambda', check, str(data)))
+        execute_insert_sql((low_data.diagnosis_id, 'Lambda', '005', 'Lambda', 'Lambda', check, str(data)))
         print()
 
     def lambda_006(self):
@@ -159,7 +159,7 @@ class Lambda:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, function['FunctionName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '006', function['FunctionName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '006', function['FunctionName'], function['FunctionArn'], check, str(data)))
         print()
 
     def lambda_007(self):
@@ -179,7 +179,7 @@ class Lambda:
                     append_summary(data, function['FunctionName'] + ' Lambda 환경 변수가 암호화되어 있는지 확인하시오.')
 
             print(check, data, function['FunctionName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '007', function['FunctionName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '007', function['FunctionName'], function['FunctionArn'], check, str(data)))
         print()
 
     def lambda_008(self):
@@ -196,5 +196,5 @@ class Lambda:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, function['FunctionName'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '008', function['FunctionName'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'Lambda', '008', function['FunctionName'], function['FunctionArn'], check, str(data)))
         print()

@@ -38,7 +38,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '001', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '001', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_002(self):
@@ -64,7 +64,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '002', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '002', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_003(self):
@@ -90,7 +90,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '003', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '003', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_004(self):
@@ -107,7 +107,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '004', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '004', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_005(self):
@@ -125,7 +125,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '005', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '005', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_006(self):
@@ -143,7 +143,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '006', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '006', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_007(self):
@@ -163,7 +163,7 @@ class S3:
                 check = '?'
 
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '007', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '007', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_008(self):
@@ -180,7 +180,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '008', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '008', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_009(self): # 서버 액세스 로깅이 A에서 B를 Target으로 삼고있다면, B에 대한 액세스 로깅이 A에 쌓이는건가 아니면 A에 대한 액세스 로깅이 B에 쌓이는건가.
@@ -197,7 +197,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '009', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '009', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_010(self):
@@ -215,7 +215,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '010', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '010', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_011(self):
@@ -240,7 +240,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '011', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '011', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
     def s3_012(self):
@@ -258,7 +258,7 @@ class S3:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, bucket['Name'], data, sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'S3', '012', bucket['Name'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'S3', '012', bucket['Name'], 'arn:aws:s3:::' + bucket['Name'], check, str(data)))
         print()
 
 

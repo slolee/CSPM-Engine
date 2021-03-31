@@ -33,7 +33,7 @@ class CloudFront:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, distribution['Id'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '001', distribution['Id'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '001', distribution['Id'], distribution['ARN'], check, str(data)))
         print()
 
     def cloudfront_002(self):
@@ -50,7 +50,7 @@ class CloudFront:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, distribution['Id'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '002', distribution['Id'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '002', distribution['Id'], distribution['ARN'], check, str(data)))
         print()
 
     def cloudfront_003(self):
@@ -70,7 +70,7 @@ class CloudFront:
                 if len(data['summary']) > 0:
                     check = 'N'
                 print(check, data, distribution['Id'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '003', distribution['Id'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '003', distribution['Id'], distribution['ARN'], check, str(data)))
         print()
 
     def cloudfront_004(self):
@@ -92,7 +92,7 @@ class CloudFront:
                 if len(data['summary']) > 0:
                     check = 'N'
                 print(check, data, distribution['Id'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '004', distribution['Id'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '004', distribution['Id'], distribution['ARN'], check, str(data)))
         print()
 
     def cloudfront_005(self):
@@ -113,7 +113,7 @@ class CloudFront:
                 if len(data['summary']) > 0:
                     check = 'N'
                 print(check, data, distribution['Id'], sep='\n')
-                execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '005', distribution['Id'], check, str(data)))
+                execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '005', distribution['Id'], distribution['ARN'], check, str(data)))
         print()
 
     def cloudfront_006(self):
@@ -140,7 +140,7 @@ class CloudFront:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, distribution['Id'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '006', distribution['Id'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '006', distribution['Id'], distribution['ARN'], check, str(data)))
         print()
 
     def cloudfront_007(self):
@@ -157,7 +157,7 @@ class CloudFront:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, distribution['Id'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '007', distribution['Id'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '007', distribution['Id'], distribution['ARN'], check, str(data)))
         print()
 
     def cloudfront_008(self):
@@ -184,5 +184,5 @@ class CloudFront:
             if len(data['summary']) > 0:
                 check = 'N'
             print(check, data, distribution['Id'], sep='\n')
-            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '008', distribution['Id'], check, str(data)))
+            execute_insert_sql((low_data.diagnosis_id, 'CloudFront', '008', distribution['Id'], distribution['ARN'], check, str(data)))
         print()

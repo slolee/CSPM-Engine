@@ -56,6 +56,8 @@ class Client:
                                   region_name=region_name)
         self.backup_client = boto3.client('backup', aws_access_key_id=access_key, aws_secret_access_key=secret_key,
                                   region_name=region_name)
-        self.AWS_CURRENT_ID = client.sts_client.get_caller_identity()
+
+        self.AWS_CURRENT_ID = self.sts_client.get_caller_identity()
 
 client = Client()
+
