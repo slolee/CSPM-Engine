@@ -1,6 +1,5 @@
-import boto3
 from botocore.exceptions import ClientError
-from Common.client import client
+from common.client import client
 
 class LowData:
     def __init__(self):
@@ -35,26 +34,18 @@ class LowData:
         self.vpn_connections = []
         self.nat_gateways = []
 
-        # CloudTrail
-        self.trails = []
-        self.trail_status = {}
-        self.event_selectors = {}
-
-        # CloudWatch
-        self.log_groups = []
-        self.metric_filters = {}
-        self.log_group_on_trails = []
-        self.metric_alarms = []
-
-        # S3
-        self.buckets = []
-        self.buckets_policy = {}
-        self.buckets_acl = {}
-        self.buckets_encryption = {}
-        self.buckets_versioning = {}
-        self.buckets_lifecycle_configuration = {}
-        self.buckets_object_lock_configuration = {}
-        self.buckets_logging = {}
+        # EC2
+        self.images = []
+        self.instances = []
+        self.auto_scaling_instances = []
+        self.launch_configurations = []
+        self.launch_templates = []
+        self.launch_template_versions = {}
+        self.route_tables = []
+        self.load_balancers_v1 = []
+        self.load_balancers_v2 = []
+        self.load_balancer_attribute_v1 = {}
+        self.load_balancer_attribute_v2 = {}
 
         # RDS
         self.db_instances = []
@@ -72,23 +63,31 @@ class LowData:
         self.list_backup_selections = []
         self.backup_selections = {}
 
-        # EC2
-        self.images = []
-        self.instances = []
-        self.auto_scaling_instances = []
-        self.launch_configurations = []
-        self.launch_templates = []
-        self.launch_template_versions = {}
-        self.route_tables = []
-        self.load_balancers_v1 = []
-        self.load_balancers_v2 = []
-        self.load_balancer_attribute_v1 = {}
-        self.load_balancer_attribute_v2 = {}
+        # S3
+        self.buckets = []
+        self.buckets_policy = {}
+        self.buckets_acl = {}
+        self.buckets_encryption = {}
+        self.buckets_versioning = {}
+        self.buckets_lifecycle_configuration = {}
+        self.buckets_object_lock_configuration = {}
+        self.buckets_logging = {}
 
         # EBS
         self.snapshots = []
         self.volumes = []
         self.ebs_encryption_by_default = None
+
+        # CloudTrail
+        self.trails = []
+        self.trail_status = {}
+        self.event_selectors = {}
+
+        # CloudWatch
+        self.log_groups = []
+        self.metric_filters = {}
+        self.log_group_on_trails = []
+        self.metric_alarms = []
 
         # CloudFront
         self.distributions = []
@@ -106,35 +105,6 @@ class LowData:
 
     def init_diagnosis_id(self, diagnosis_id):
         self.diagnosis_id = diagnosis_id
-
-    def load_vpc_low_data(self):
-        if not self.vpcs:
-            describe_vpcs = client.ec2_client.get_paginator('describe_vpcs').paginate()
-            self.vpcs = [vpc for vpcs in describe_vpcs for vpc in vpcs['Vpcs']]
-        if not self.security_groups:
-            describe_security_groups = client.ec2_client.get_paginator('describe_security_groups').paginate()
-            self.security_groups = [security_group for security_groups in describe_security_groups for security_group in security_groups['SecurityGroups']]
-        if not self.network_acls:
-            describe_network_acls = client.ec2_client.get_paginator('describe_network_acls').paginate()
-            self.network_acls = [network_acl for network_acls in describe_network_acls for network_acl in network_acls['NetworkAcls']]
-        if not self.subnets:
-            describe_subnets = client.ec2_client.get_paginator('describe_subnets').paginate()
-            self.subnets = [subnet for subnets in describe_subnets for subnet in subnets['Subnets']]
-        if not self.flow_logs:
-            describe_flow_logs = client.ec2_client.get_paginator('describe_flow_logs').paginate()
-            self.flow_logs = [flow_log for flow_logs in describe_flow_logs for flow_log in flow_logs['FlowLogs']]
-        if not self.vpc_endpoints:
-            describe_vpc_endpoints = client.ec2_client.get_paginator('describe_vpc_endpoints').paginate()
-            self.vpc_endpoints = [vpc_endpoint for vpc_endpoints in describe_vpc_endpoints for vpc_endpoint in vpc_endpoints['VpcEndpoints']]
-        if not self.vpc_peering_connections:
-            describe_vpc_peering_connections = client.ec2_client.get_paginator('describe_vpc_peering_connections').paginate()
-            self.vpc_peering_connections = [vpc_peering_connection for vpc_peering_connections in describe_vpc_peering_connections for vpc_peering_connection in vpc_peering_connections['VpcPeeringConnections']]
-        if not self.vpn_connections:
-            describe_vpn_connections = client.ec2_client.describe_vpn_connections()
-            self.vpn_connections = describe_vpn_connections['VpnConnections']
-        if not self.nat_gateways:
-            describe_nat_gateways = client.ec2_client.get_paginator('describe_nat_gateways').paginate()
-            self.nat_gateways = [nat_gateway for nat_gateways in describe_nat_gateways for nat_gateway in nat_gateways['NatGateways']]
 
     def load_iam_low_data(self):
         get_credential_report = None
@@ -206,100 +176,77 @@ class LowData:
             for name in server_certificates_name:
                 self.server_certificates = client.iam_client.get_server_certificate(ServerCertificateName=name)['ServerCertificate']
 
-    def load_cloudtrail_low_data(self):
-        if not self.trails:
-            describe_trails = client.cloudtrail_client.describe_trails()
-            self.trails = describe_trails['trailList']
-        if not self.trail_status:
-            for trail in self.trails:
-                self.trail_status[trail['TrailARN']] = client.cloudtrail_client.get_trail_status(Name=trail['TrailARN'])
-        if not self.event_selectors:
-            for trail in self.trails:
-                self.event_selectors[trail['TrailARN']] = client.cloudtrail_client.get_event_selectors(TrailName=trail['TrailARN'])
+    def load_vpc_low_data(self):
+        if not self.vpcs:
+            describe_vpcs = client.ec2_client.get_paginator('describe_vpcs').paginate()
+            self.vpcs = [vpc for vpcs in describe_vpcs for vpc in vpcs['Vpcs']]
+        if not self.security_groups:
+            describe_security_groups = client.ec2_client.get_paginator('describe_security_groups').paginate()
+            self.security_groups = [security_group for security_groups in describe_security_groups for security_group in security_groups['SecurityGroups']]
+        if not self.network_acls:
+            describe_network_acls = client.ec2_client.get_paginator('describe_network_acls').paginate()
+            self.network_acls = [network_acl for network_acls in describe_network_acls for network_acl in network_acls['NetworkAcls']]
+        if not self.subnets:
+            describe_subnets = client.ec2_client.get_paginator('describe_subnets').paginate()
+            self.subnets = [subnet for subnets in describe_subnets for subnet in subnets['Subnets']]
+        if not self.flow_logs:
+            describe_flow_logs = client.ec2_client.get_paginator('describe_flow_logs').paginate()
+            self.flow_logs = [flow_log for flow_logs in describe_flow_logs for flow_log in flow_logs['FlowLogs']]
+        if not self.vpc_endpoints:
+            describe_vpc_endpoints = client.ec2_client.get_paginator('describe_vpc_endpoints').paginate()
+            self.vpc_endpoints = [vpc_endpoint for vpc_endpoints in describe_vpc_endpoints for vpc_endpoint in vpc_endpoints['VpcEndpoints']]
+        if not self.vpc_peering_connections:
+            describe_vpc_peering_connections = client.ec2_client.get_paginator('describe_vpc_peering_connections').paginate()
+            self.vpc_peering_connections = [vpc_peering_connection for vpc_peering_connections in describe_vpc_peering_connections for vpc_peering_connection in vpc_peering_connections['VpcPeeringConnections']]
+        if not self.vpn_connections:
+            describe_vpn_connections = client.ec2_client.describe_vpn_connections()
+            self.vpn_connections = describe_vpn_connections['VpnConnections']
+        if not self.nat_gateways:
+            describe_nat_gateways = client.ec2_client.get_paginator('describe_nat_gateways').paginate()
+            self.nat_gateways = [nat_gateway for nat_gateways in describe_nat_gateways for nat_gateway in nat_gateways['NatGateways']]
 
-    def load_cloudwatch_low_data(self):
-        if not self.trails:
-            describe_trails = client.cloudtrail_client.describe_trails()
-            self.trails = describe_trails['trailList']
-        if not self.trail_status:
-            for trail in self.trails:
-                self.trail_status[trail['TrailARN']] = client.cloudtrail_client.get_trail_status(Name=trail['TrailARN'])
-        if not self.event_selectors:
-            for trail in self.trails:
-                self.event_selectors[trail['TrailARN']] = client.cloudtrail_client.get_event_selectors(TrailName=trail['TrailARN'])
-        if not self.log_groups:
-            describe_log_groups = client.logs_client.get_paginator('describe_log_groups').paginate()
-            self.log_groups = [log_group for log_groups in describe_log_groups for log_group in log_groups['logGroups']]
-        if not self.log_group_on_trails:
-            for trail in self.trails:
-                if trail['IsMultiRegionTrail'] and low_data.trail_status[trail['TrailARN']]['IsLogging']:
-                    get_event_selectors = low_data.event_selectors[trail['TrailARN']]
-                    if 'EventSelectors' in get_event_selectors:
-                        management_event_selectors = [event_selector for event_selector in get_event_selectors['EventSelectors'] if event_selector['IncludeManagementEvents']]
-                        if management_event_selectors:
-                            management_event_selectors_read_write_type = [management_event_selector['ReadWriteType'] for management_event_selector in management_event_selectors]
-                            if 'All' in management_event_selectors_read_write_type:
-                                self.log_group_on_trails.extend([log_group for log_group in low_data.log_groups if 'CloudWatchLogsLogGroupArn' in trail and log_group['arn'] == trail['CloudWatchLogsLogGroupArn']])
-                    elif 'AdvancedEventSelectors' in get_event_selectors:
-                        management_field_selectors = [advanced_event_selector['FieldSelectors'] for advanced_event_selector in get_event_selectors['AdvancedEventSelectors']
-                                                      if {'Field': 'eventCategory', 'Equals': ['Management']} in advanced_event_selector['FieldSelectors']]
-                        if management_field_selectors and {'Field': 'readOnly', 'Equals': ['true']} not in management_field_selectors[0] and {'Field': 'readOnly', 'Equals': ['false']} not in management_field_selectors[0]:
-                            self.log_group_on_trails.extend([log_group for log_group in low_data.log_groups if 'CloudWatchLogsLogGroupArn' in trail and log_group['arn'] == trail['CloudWatchLogsLogGroupArn']])
-        if not self.metric_filters:
-            for log_group in self.log_groups:
-                describe_metric_filters = client.logs_client.get_paginator('describe_metric_filters').paginate(logGroupName=log_group['logGroupName'])
-                self.metric_filters[log_group['logGroupName']] = [metric_filter for metric_filters in describe_metric_filters for metric_filter in metric_filters['metricFilters']]
-        if not self.metric_alarms:
-            describe_alarms = client.cloudwatch_client.get_paginator('describe_alarms').paginate()
-            self.metric_alarms = [alarm for alarms in describe_alarms for alarm in alarms['MetricAlarms']]
-
-    def load_s3_low_data(self):
-        if not self.buckets:
-            list_buckets = client.s3_client.list_buckets()
-            self.buckets = list_buckets['Buckets']
-        if not self.buckets_policy:
-            for bucket in self.buckets:
-                get_bucket_policy = client.s3_client.get_bucket_policy(Bucket=bucket['Name'])
-                self.buckets_policy[bucket['Name']] = get_bucket_policy['Policy']
-        if not self.buckets_acl:
-            for bucket in self.buckets:
-                get_bucket_acl = client.s3_client.get_bucket_acl(Bucket=bucket['Name'])
-                self.buckets_acl[bucket['Name']] = get_bucket_acl['Grants']
-        if not self.buckets_encryption:
-            for bucket in self.buckets:
-                try:
-                    get_bucket_encryption = client.s3_client.get_bucket_encryption(Bucket=bucket['Name'])
-                    self.buckets_encryption[bucket['Name']] = get_bucket_encryption['ServerSideEncryptionConfiguration']['Rules']
-                except ClientError as e:
-                    self.buckets_encryption[bucket['Name']] = []
-        if not self.buckets_versioning:
-            for bucket in self.buckets:
-                get_bucket_versioning = client.s3_client.get_bucket_versioning(Bucket=bucket['Name'])
-                if 'Status' in get_bucket_versioning:
-                    self.buckets_versioning[bucket['Name']] = get_bucket_versioning
-                else:
-                    self.buckets_versioning[bucket['Name']] = {}
-        if not self.buckets_lifecycle_configuration:
-            for bucket in self.buckets:
-                try:
-                    get_bucket_lifecycle_configuration = client.s3_client.get_bucket_lifecycle_configuration(Bucket=bucket['Name'])
-                    self.buckets_lifecycle_configuration[bucket['Name']] = get_bucket_lifecycle_configuration['Rules']
-                except ClientError as e:
-                    self.buckets_lifecycle_configuration[bucket['Name']] = []
-        if not self.buckets_object_lock_configuration:
-            for bucket in self.buckets:
-                try:
-                    get_object_lock_configuration = client.s3_client.get_object_lock_configuration(Bucket=bucket['Name'])
-                    self.buckets_object_lock_configuration[bucket['Name']] = get_object_lock_configuration['ObjectLockConfiguration']
-                except ClientError as e:
-                    self.buckets_object_lock_configuration[bucket['Name']] = {}
-        if not self.buckets_logging:
-            for bucket in self.buckets:
-                get_bucket_logging = client.s3_client.get_bucket_logging(Bucket=bucket['Name'])
-                if 'LoggingEnabled' in get_bucket_logging:
-                    self.buckets_logging[bucket['Name']] = get_bucket_logging['LoggingEnabled']
-                else:
-                    self.buckets_logging[bucket['Name']] = {}
+    def load_ec2_low_data(self):
+        if not self.images:
+            describe_images = client.ec2_client.describe_images(Owners=['self'])
+            self.images = describe_images['Images']
+        if not self.instances:
+            describe_instances = client.ec2_client.get_paginator('describe_instances').paginate()
+            for reservation in [instance for instances in describe_instances for instance in instances['Reservations']]:
+                self.instances.extend(reservation['Instances'])
+        if not self.auto_scaling_instances:
+            describe_auto_scaling_instances = client.autoscaling_client.get_paginator('describe_auto_scaling_instances').paginate()
+            self.auto_scaling_instances = [auto_scaling_instance for auto_scaling_instances in describe_auto_scaling_instances for auto_scaling_instance in auto_scaling_instances['AutoScalingInstances']]
+        if not self.launch_configurations:
+            describe_launch_configurations = client.autoscaling_client.get_paginator('describe_launch_configurations').paginate()
+            self.launch_configurations = [launch_configuration for launch_configurations in describe_launch_configurations for launch_configuration in launch_configurations['LaunchConfigurations']]
+        if not self.launch_templates:
+            describe_launch_templates = client.ec2_client.get_paginator('describe_launch_templates').paginate()
+            self.launch_templates = [launch_template for launch_templates in describe_launch_templates for launch_template in launch_templates['LaunchTemplates']]
+        if not self.launch_template_versions:
+            for launch_template in self.launch_templates:
+                describe_launch_template_versions = client.ec2_client.get_paginator('describe_launch_template_versions').paginate(LaunchTemplateName=launch_template['LaunchTemplateName'])
+                self.launch_template_versions[launch_template['LaunchTemplateName']] = [launch_template_version for launch_template_versions in describe_launch_template_versions
+                                                                                        for launch_template_version in launch_template_versions['LaunchTemplateVersions'] if launch_template_version['DefaultVersion']]
+        if not self.route_tables:
+            describe_route_tables = client.ec2_client.get_paginator('describe_route_tables').paginate()
+            self.route_tables = [route_table for route_tables in describe_route_tables for route_table in route_tables['RouteTables']]
+        if not self.load_balancers_v1:
+            describe_load_balancers = client.elb_client.get_paginator('describe_load_balancers').paginate()
+            self.load_balancers_v1 = [load_balancer for load_balancers in describe_load_balancers for load_balancer in load_balancers['LoadBalancerDescriptions']]
+        if not self.load_balancers_v2:
+            describe_load_balancers = client.elbv2_client.get_paginator('describe_load_balancers').paginate()
+            self.load_balancers_v2 = [load_balancer for load_balancers in describe_load_balancers for load_balancer in load_balancers['LoadBalancers']]
+        if not self.load_balancer_attribute_v1:
+            for load_balancer in self.load_balancers_v1:
+                describe_load_balancer_attributes = client.elb_client.describe_load_balancer_attributes(LoadBalancerName=load_balancer['LoadBalancerName'])
+                self.load_balancer_attribute_v1[load_balancer['LoadBalancerName']] = describe_load_balancer_attributes['LoadBalancerAttributes']
+        if not self.load_balancer_attribute_v2:
+            for load_balancer in self.load_balancers_v2:
+                describe_load_balancer_attributes = client.elbv2_client.describe_load_balancer_attributes(LoadBalancerArn=load_balancer['LoadBalancerArn'])
+                self.load_balancer_attribute_v2[load_balancer['LoadBalancerArn']] = describe_load_balancer_attributes['Attributes']
+        if not self.security_groups:
+            describe_security_groups = client.ec2_client.get_paginator('describe_security_groups').paginate()
+            self.security_groups = [security_group for security_groups in describe_security_groups for security_group in security_groups['SecurityGroups']]
 
     def load_rds_low_data(self):
         if not self.db_instances:
@@ -366,49 +313,6 @@ class LowData:
                 except ClientError as e:
                     self.backup_selections = {'Error': 'Error'}
 
-    def load_ec2_low_data(self):
-        if not self.images:
-            describe_images = client.ec2_client.describe_images(Owners=['self'])
-            self.images = describe_images['Images']
-        if not self.instances:
-            describe_instances = client.ec2_client.get_paginator('describe_instances').paginate()
-            for reservation in [instance for instances in describe_instances for instance in instances['Reservations']]:
-                self.instances.extend(reservation['Instances'])
-        if not self.auto_scaling_instances:
-            describe_auto_scaling_instances = client.autoscaling_client.get_paginator('describe_auto_scaling_instances').paginate()
-            self.auto_scaling_instances = [auto_scaling_instance for auto_scaling_instances in describe_auto_scaling_instances for auto_scaling_instance in auto_scaling_instances['AutoScalingInstances']]
-        if not self.launch_configurations:
-            describe_launch_configurations = client.autoscaling_client.get_paginator('describe_launch_configurations').paginate()
-            self.launch_configurations = [launch_configuration for launch_configurations in describe_launch_configurations for launch_configuration in launch_configurations['LaunchConfigurations']]
-        if not self.launch_templates:
-            describe_launch_templates = client.ec2_client.get_paginator('describe_launch_templates').paginate()
-            self.launch_templates = [launch_template for launch_templates in describe_launch_templates for launch_template in launch_templates['LaunchTemplates']]
-        if not self.launch_template_versions:
-            for launch_template in self.launch_templates:
-                describe_launch_template_versions = client.ec2_client.get_paginator('describe_launch_template_versions').paginate(LaunchTemplateName=launch_template['LaunchTemplateName'])
-                self.launch_template_versions[launch_template['LaunchTemplateName']] = [launch_template_version for launch_template_versions in describe_launch_template_versions
-                                                                                        for launch_template_version in launch_template_versions['LaunchTemplateVersions'] if launch_template_version['DefaultVersion']]
-        if not self.route_tables:
-            describe_route_tables = client.ec2_client.get_paginator('describe_route_tables').paginate()
-            self.route_tables = [route_table for route_tables in describe_route_tables for route_table in route_tables['RouteTables']]
-        if not self.load_balancers_v1:
-            describe_load_balancers = client.elb_client.get_paginator('describe_load_balancers').paginate()
-            self.load_balancers_v1 = [load_balancer for load_balancers in describe_load_balancers for load_balancer in load_balancers['LoadBalancerDescriptions']]
-        if not self.load_balancers_v2:
-            describe_load_balancers = client.elbv2_client.get_paginator('describe_load_balancers').paginate()
-            self.load_balancers_v2 = [load_balancer for load_balancers in describe_load_balancers for load_balancer in load_balancers['LoadBalancers']]
-        if not self.load_balancer_attribute_v1:
-            for load_balancer in self.load_balancers_v1:
-                describe_load_balancer_attributes = client.elb_client.describe_load_balancer_attributes(LoadBalancerName=load_balancer['LoadBalancerName'])
-                self.load_balancer_attribute_v1[load_balancer['LoadBalancerName']] = describe_load_balancer_attributes['LoadBalancerAttributes']
-        if not self.load_balancer_attribute_v2:
-            for load_balancer in self.load_balancers_v2:
-                describe_load_balancer_attributes = client.elbv2_client.describe_load_balancer_attributes(LoadBalancerArn=load_balancer['LoadBalancerArn'])
-                self.load_balancer_attribute_v2[load_balancer['LoadBalancerArn']] = describe_load_balancer_attributes['Attributes']
-        if not self.security_groups:
-            describe_security_groups = client.ec2_client.get_paginator('describe_security_groups').paginate()
-            self.security_groups = [security_group for security_groups in describe_security_groups for security_group in security_groups['SecurityGroups']]
-
     def load_ebs_low_data(self):
         if not self.snapshots:
             describe_snapshots = client.ec2_client.get_paginator('describe_snapshots').paginate(OwnerIds=[client.AWS_CURRENT_ID['Account']])
@@ -433,6 +337,101 @@ class LowData:
             list_aliases = client.kms_client.get_paginator('list_aliases').paginate()
             self.aliases = [alias for aliases in list_aliases for alias in aliases['Aliases'] if 'TargetKeyId' in alias]
             self.customer_keys_id = [alias['TargetKeyId'] for alias in self.aliases if not alias['AliasName'].startswith('alias/aws') and alias['TargetKeyId'] not in self.customer_keys_id]
+
+    def load_s3_low_data(self):
+        if not self.buckets:
+            list_buckets = client.s3_client.list_buckets()
+            self.buckets = list_buckets['Buckets']
+        if not self.buckets_policy:
+            for bucket in self.buckets:
+                get_bucket_policy = client.s3_client.get_bucket_policy(Bucket=bucket['Name'])
+                self.buckets_policy[bucket['Name']] = get_bucket_policy['Policy']
+        if not self.buckets_acl:
+            for bucket in self.buckets:
+                get_bucket_acl = client.s3_client.get_bucket_acl(Bucket=bucket['Name'])
+                self.buckets_acl[bucket['Name']] = get_bucket_acl['Grants']
+        if not self.buckets_encryption:
+            for bucket in self.buckets:
+                try:
+                    get_bucket_encryption = client.s3_client.get_bucket_encryption(Bucket=bucket['Name'])
+                    self.buckets_encryption[bucket['Name']] = get_bucket_encryption['ServerSideEncryptionConfiguration']['Rules']
+                except ClientError as e:
+                    self.buckets_encryption[bucket['Name']] = []
+        if not self.buckets_versioning:
+            for bucket in self.buckets:
+                get_bucket_versioning = client.s3_client.get_bucket_versioning(Bucket=bucket['Name'])
+                if 'Status' in get_bucket_versioning:
+                    self.buckets_versioning[bucket['Name']] = get_bucket_versioning
+                else:
+                    self.buckets_versioning[bucket['Name']] = {}
+        if not self.buckets_lifecycle_configuration:
+            for bucket in self.buckets:
+                try:
+                    get_bucket_lifecycle_configuration = client.s3_client.get_bucket_lifecycle_configuration(Bucket=bucket['Name'])
+                    self.buckets_lifecycle_configuration[bucket['Name']] = get_bucket_lifecycle_configuration['Rules']
+                except ClientError as e:
+                    self.buckets_lifecycle_configuration[bucket['Name']] = []
+        if not self.buckets_object_lock_configuration:
+            for bucket in self.buckets:
+                try:
+                    get_object_lock_configuration = client.s3_client.get_object_lock_configuration(Bucket=bucket['Name'])
+                    self.buckets_object_lock_configuration[bucket['Name']] = get_object_lock_configuration['ObjectLockConfiguration']
+                except ClientError as e:
+                    self.buckets_object_lock_configuration[bucket['Name']] = {}
+        if not self.buckets_logging:
+            for bucket in self.buckets:
+                get_bucket_logging = client.s3_client.get_bucket_logging(Bucket=bucket['Name'])
+                if 'LoggingEnabled' in get_bucket_logging:
+                    self.buckets_logging[bucket['Name']] = get_bucket_logging['LoggingEnabled']
+                else:
+                    self.buckets_logging[bucket['Name']] = {}
+
+    def load_cloudtrail_low_data(self):
+        if not self.trails:
+            describe_trails = client.cloudtrail_client.describe_trails()
+            self.trails = describe_trails['trailList']
+        if not self.trail_status:
+            for trail in self.trails:
+                self.trail_status[trail['TrailARN']] = client.cloudtrail_client.get_trail_status(Name=trail['TrailARN'])
+        if not self.event_selectors:
+            for trail in self.trails:
+                self.event_selectors[trail['TrailARN']] = client.cloudtrail_client.get_event_selectors(TrailName=trail['TrailARN'])
+
+    def load_cloudwatch_low_data(self):
+        if not self.trails:
+            describe_trails = client.cloudtrail_client.describe_trails()
+            self.trails = describe_trails['trailList']
+        if not self.trail_status:
+            for trail in self.trails:
+                self.trail_status[trail['TrailARN']] = client.cloudtrail_client.get_trail_status(Name=trail['TrailARN'])
+        if not self.event_selectors:
+            for trail in self.trails:
+                self.event_selectors[trail['TrailARN']] = client.cloudtrail_client.get_event_selectors(TrailName=trail['TrailARN'])
+        if not self.log_groups:
+            describe_log_groups = client.logs_client.get_paginator('describe_log_groups').paginate()
+            self.log_groups = [log_group for log_groups in describe_log_groups for log_group in log_groups['logGroups']]
+        if not self.log_group_on_trails:
+            for trail in self.trails:
+                if trail['IsMultiRegionTrail'] and low_data.trail_status[trail['TrailARN']]['IsLogging']:
+                    get_event_selectors = low_data.event_selectors[trail['TrailARN']]
+                    if 'EventSelectors' in get_event_selectors:
+                        management_event_selectors = [event_selector for event_selector in get_event_selectors['EventSelectors'] if event_selector['IncludeManagementEvents']]
+                        if management_event_selectors:
+                            management_event_selectors_read_write_type = [management_event_selector['ReadWriteType'] for management_event_selector in management_event_selectors]
+                            if 'All' in management_event_selectors_read_write_type:
+                                self.log_group_on_trails.extend([log_group for log_group in low_data.log_groups if 'CloudWatchLogsLogGroupArn' in trail and log_group['arn'] == trail['CloudWatchLogsLogGroupArn']])
+                    elif 'AdvancedEventSelectors' in get_event_selectors:
+                        management_field_selectors = [advanced_event_selector['FieldSelectors'] for advanced_event_selector in get_event_selectors['AdvancedEventSelectors']
+                                                      if {'Field': 'eventCategory', 'Equals': ['Management']} in advanced_event_selector['FieldSelectors']]
+                        if management_field_selectors and {'Field': 'readOnly', 'Equals': ['true']} not in management_field_selectors[0] and {'Field': 'readOnly', 'Equals': ['false']} not in management_field_selectors[0]:
+                            self.log_group_on_trails.extend([log_group for log_group in low_data.log_groups if 'CloudWatchLogsLogGroupArn' in trail and log_group['arn'] == trail['CloudWatchLogsLogGroupArn']])
+        if not self.metric_filters:
+            for log_group in self.log_groups:
+                describe_metric_filters = client.logs_client.get_paginator('describe_metric_filters').paginate(logGroupName=log_group['logGroupName'])
+                self.metric_filters[log_group['logGroupName']] = [metric_filter for metric_filters in describe_metric_filters for metric_filter in metric_filters['metricFilters']]
+        if not self.metric_alarms:
+            describe_alarms = client.cloudwatch_client.get_paginator('describe_alarms').paginate()
+            self.metric_alarms = [alarm for alarms in describe_alarms for alarm in alarms['MetricAlarms']]
 
     def load_cloudfront_low_data(self):
         if not self.distributions:

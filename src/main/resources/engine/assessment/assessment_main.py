@@ -14,61 +14,69 @@ from myLambda import *
 if __name__ == '__main__':
     arguments = sys.argv
 
+    print('[*] Assessment Start')
     client.init_client(arguments[2], arguments[3], arguments[4])
-    low_data.init_diagnosis_id(arguments[1])
+    execute_insert_history_sql((arguments[1], "running"))
+    commit()
+
+    rows = execute_select_history_sql(arguments[1])
+    low_data.init_diagnosis_id(rows[0][0])
 
     if 'IAM' in arguments[5]:
-        print('====== IAM 진단 시작 ======')
+        print('[*] IAM Assessment Start')
         iam = IAM()
         iam.audit_all()
-        print('====== IAM 진단 종료 ======')
+        print('[*] IAM Assessment End')
     if 'VPC' in arguments[5]:
-        print('====== VPC 진단 시작 ======')
+        print('[*] VPC Assessment Start')
         vpc = VPC()
         vpc.audit_all()
-        print('====== VPC 진단 종료 ======')
+        print('[*] VPC Assessment End')
     if 'CloudTrail' in arguments[5]:
-        print('====== CloudTrail 진단 시작 ======')
+        print('[*] CloudTrail Assessment Start')
         cloudtrail = CloudTrail()
         cloudtrail.audit_all()
-        print('====== CloudTrail 진단 종료 ======')
+        print('[*] CloudTrail Assessment End')
     if 'CloudWatch' in arguments[5]:
-        print('====== CloudWatch 진단 시작 ======')
+        print('[*] CloudWatch Assessment Start')
         cloudwatch = CloudWatch()
         cloudwatch.audit_all()
-        print('====== CloudWatch 진단 종료 ======')
+        print('[*] CloudWatch Assessment End')
     if 'EC2' in arguments[5]:
-        print('====== EC2 진단 시작 ======')
+        print('[*] EC2 Assessment Start')
         ec2 = EC2()
         ec2.audit_all()
-        print('====== EC2 진단 종료 ======')
+        print('[*] EC2 Assessment End')
     if 'RDS' in arguments[5]:
-        print('====== RDS 진단 시작 ======')
+        print('[*] RDS Assessment Start')
         rds = RDS()
         rds.audit_all()
-        print('====== RDS 진단 종료 ======')
+        print('[*] RDS Assessment End')
     if 'S3' in arguments[5]:
-        print('====== S3 진단 시작 ======')
+        print('[*] S3 Assessment Start')
         s3 = S3()
         s3.audit_all()
-        print('====== S3 진단 종료 ======')
+        print('[*] S3 Assessment End')
     if 'EBS' in arguments[5]:
-        print('====== EBS 진단 시작 ======')
+        print('[*] EBS Assessment Start')
         ebs = EBS()
         ebs.audit_all()
-        print('====== EBS 진단 종료 ======')
+        print('[*] EBS Assessment End')
     if 'CloudFront' in arguments[5]:
-        print('====== CloudFront 진단 시작 ======')
+        print('[*] CloudFront Assessment Start')
         cloudfront = CloudFront()
         cloudfront.audit_all()
-        print('====== CloudFront 진단 종료 ======')
+        print('[*] CloudFront Assessment End')
     if 'KMS' in arguments[5]:
-        print('====== KMS 진단 시작 ======')
+        print('[*] KMS Assessment Start')
         kms = KMS()
         kms.audit_all()
-        print('====== KMS 진단 종료 ======')
+        print('[*] KMS Assessment End')
     if 'Lambda' in arguments[5]:
-        print('====== Lambda 진단 시작 ======')
+        print('[*] Lambda Assessment Start')
         myLambda = Lambda()
         myLambda.audit_all()
-        print('====== Lambda 진단 종료 ======')
+        print('[*] Lambda Assessment End')
+
+    commit()
+    print('[*] Assessment End')

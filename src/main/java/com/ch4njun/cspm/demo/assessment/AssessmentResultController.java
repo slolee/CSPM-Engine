@@ -5,6 +5,7 @@ import com.ch4njun.cspm.demo.history.HistoryAlreadyExistsException;
 import com.ch4njun.cspm.demo.history.HistoryNotFoundException;
 import com.ch4njun.cspm.demo.history.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.zeroturnaround.exec.ProcessExecutor;
 
@@ -69,40 +70,30 @@ public class AssessmentResultController {
     }
 
     @PostMapping("")
-    public void run(@RequestBody AssessmentResultPostRequestBody body) {
+    public Message run(@RequestBody AssessmentResultPostRequestBody body) {
         if (historyRepository.findHistoryByHistoryId(body.getHistoryId()) != null) {
             throw new HistoryAlreadyExistsException(String.format("History ID[%s] already exists", body.getHistoryId()));
         }
 
-        History history = new History(body.getHistoryId(), "running");
-        historyRepository.save(history);
-
         try {
-            new Thread() {
-                public void run() {
-                    try {
-                        String pythonPath = "src\\main\\java\\com\\ch4njun\\cspm\\demo\\engine\\assessment\\check_main.py";
-                        String python = "D:\\Install\\Python3";
-                        History history = historyRepository.findHistoryByHistoryId(body.getHistoryId());
+            String pythonPath = "src\\main\\resources\\engine\\assessment\\assessment_main.py";
+            String python = "D:\\Install\\Python3";
+            String output = new ProcessExecutor().command(python + "\\python.exe", pythonPath, String.valueOf(body.getHistoryId()),
+                    String.valueOf(body.getAccessKey()), String.valueOf(body.getSecretKey()), String.valueOf(body.getRegionName()),
+                    Arrays.toString(body.getServices()))
+                    .readOutput(true)
+                    .execute()
+                    .outputString("EUC-KR");
+            System.out.println(output);
 
-                        String output = new ProcessExecutor().command(python + "\\python.exe", pythonPath, String.valueOf(history.getId()),
-                                String.valueOf(body.getAccessKey()), String.valueOf(body.getSecretKey()), String.valueOf(body.getRegionName()),
-                                Arrays.toString(body.getServices()))
-                                .readOutput(true)
-                                .execute()
-                                .outputString("EUC-KR");
-                        System.out.println(output);
-
-                        history.setStatus("complete");
-                        historyRepository.save(history);
-                    }catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-            }.start();
+            History history = historyRepository.findHistoryByHistoryId(body.getHistoryId());
+            history.setStatus("Complete");
+            historyRepository.save(history);
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+        return new Message("Complete");
     }
 
     @PutMapping("/{id}")

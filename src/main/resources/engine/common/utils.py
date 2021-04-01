@@ -1,6 +1,6 @@
 import datetime, maya
 from pytz import timezone
-from Common.data import low_data
+from common.data import low_data
 
 def from_now(date):
     return (datetime.datetime.now(timezone('Asia/Seoul')) - date).days

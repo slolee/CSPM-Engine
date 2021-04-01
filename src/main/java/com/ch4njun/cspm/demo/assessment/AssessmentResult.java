@@ -1,7 +1,6 @@
 package com.ch4njun.cspm.demo.assessment;
 
 import com.ch4njun.cspm.demo.history.History;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
