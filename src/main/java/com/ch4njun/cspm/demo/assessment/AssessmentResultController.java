@@ -89,11 +89,12 @@ public class AssessmentResultController {
             History history = historyRepository.findHistoryByHistoryId(body.getHistoryId());
             history.setStatus("Complete");
             historyRepository.save(history);
+
+            return new Message("Complete", output);
         }catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
         }
-
-        return new Message("Complete");
     }
 
     @PutMapping("/{id}")
