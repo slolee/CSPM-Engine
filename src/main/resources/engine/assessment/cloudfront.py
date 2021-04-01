@@ -32,7 +32,7 @@ class CloudFront:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudFront', '001', distribution['Id'], distribution['ARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudfront_002(self):
         try:
@@ -51,7 +51,7 @@ class CloudFront:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudFront', '002', distribution['Id'], distribution['ARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudfront_003(self):
         try:
@@ -73,7 +73,7 @@ class CloudFront:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudFront', '003', distribution['Id'], distribution['ARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudfront_004(self):
         try:
@@ -97,7 +97,7 @@ class CloudFront:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudFront', '004', distribution['Id'], distribution['ARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudfront_005(self):
         try:
@@ -120,7 +120,7 @@ class CloudFront:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudFront', '005', distribution['Id'], distribution['ARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudfront_006(self):
         try:
@@ -149,7 +149,7 @@ class CloudFront:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudFront', '006', distribution['Id'], distribution['ARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudfront_007(self):
         try:
@@ -168,7 +168,7 @@ class CloudFront:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudFront', '007', distribution['Id'], distribution['ARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudfront_008(self):
         try:
@@ -197,4 +197,4 @@ class CloudFront:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudFront', '008', distribution['Id'], distribution['ARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)

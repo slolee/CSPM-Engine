@@ -38,7 +38,7 @@ class KMS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'KMS', '001', key, low_data.keys[key]['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def kms_002(self):
         try:
@@ -55,7 +55,7 @@ class KMS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'KMS', '002', key, low_data.keys[key]['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def kms_003(self):
         try:
@@ -77,7 +77,7 @@ class KMS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'KMS', '003', key, low_data.keys[key]['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def kms_004(self):
         try:
@@ -96,7 +96,7 @@ class KMS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'KMS', '004', key, low_data.keys[key]['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def kms_005(self):
         try:
@@ -114,7 +114,7 @@ class KMS:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'KMS', '005', 'KMS', 'KMS', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def kms_006(self):
         try:
@@ -132,7 +132,7 @@ class KMS:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'KMS', '006', 'KMS', 'KMS', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def kms_007(self):
         try:
@@ -150,4 +150,4 @@ class KMS:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'KMS', '007', 'KMS', 'KMS', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)

@@ -76,7 +76,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '001', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_002(self):
         try:
@@ -99,7 +99,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '002', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_003(self):
         try:
@@ -122,7 +122,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '003', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_004(self):
         try:
@@ -145,7 +145,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '004', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_005(self):
         try:
@@ -185,7 +185,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '005', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_006(self):
         try:
@@ -208,7 +208,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '006', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_007(self):
         try:
@@ -233,7 +233,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '007', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_008(self):
         try:
@@ -257,7 +257,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '008', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_009(self):
         try:
@@ -281,7 +281,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '009', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_010(self):
         try:
@@ -305,7 +305,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '010', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_011(self):
         try:
@@ -329,7 +329,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '011', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_012(self):
         try:
@@ -353,7 +353,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '012', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_013(self):
         try:
@@ -378,7 +378,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '013', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_014(self):
         try:
@@ -405,7 +405,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '014', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_015(self):
         try:
@@ -429,7 +429,7 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '015', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudwatch_016(self):
         try:
@@ -457,5 +457,5 @@ class CloudWatch:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudWatch', '016', 'CloudWatch', 'CloudWatch', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 

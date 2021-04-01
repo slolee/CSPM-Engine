@@ -57,7 +57,7 @@ class VPC:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '001', security_group['GroupId'], security_group['GroupId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_002(self):
         try:
@@ -92,7 +92,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '002', security_group['GroupId'], security_group['GroupId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_003(self):
         try:
@@ -120,7 +120,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '003', security_group['GroupId'], security_group['GroupId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_004(self):
         try:
@@ -146,7 +146,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '004', security_group['GroupId'], security_group['GroupId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_005(self):
         try:
@@ -165,7 +165,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '005', security_group['GroupId'], security_group['GroupId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_006(self):
         try:
@@ -185,7 +185,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '006', security_group['GroupId'], security_group['GroupId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_007(self):
         try:
@@ -205,7 +205,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '007', network_acl['NetworkAclId'], network_acl['NetworkAclId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_008(self):
         try:
@@ -232,7 +232,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '008', network_acl['NetworkAclId'], network_acl['NetworkAclId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_009(self):
         try:
@@ -254,7 +254,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '009', vpc_endpoint['VpcEndpointId'], vpc_endpoint['VpcEndpointId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_010(self):
         try:
@@ -283,7 +283,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '010', vpc_peering_connection['VpcPeeringConnectionId'], vpc_peering_connection['VpcPeeringConnectionId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_011(self):
         try:
@@ -301,7 +301,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '011', vpc['VpcId'], vpc['VpcId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_012(self):
         try:
@@ -324,7 +324,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '012', vpn_connection['VpnConnectionId'], vpn_connection['VpnConnectionId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_013(self):
         try:
@@ -354,7 +354,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '013', vpc['VpcId'], vpc['VpcId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_014(self):
         try:
@@ -365,7 +365,7 @@ class VPC:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '014', 'VPC', 'VPC', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_015(self):
         try:
@@ -376,7 +376,7 @@ class VPC:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '015', 'VPC', 'VPC', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_016(self):
         try:
@@ -387,7 +387,7 @@ class VPC:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '016', 'VPC', 'VPC', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_017(self):
         try:
@@ -398,7 +398,7 @@ class VPC:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '017', 'VPC', 'VPC', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_018(self):
         try:
@@ -409,7 +409,7 @@ class VPC:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '018', 'VPC', 'VPC', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_019(self):
         try:
@@ -420,7 +420,7 @@ class VPC:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '019', 'VPC', 'VPC', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_020(self):
         try:
@@ -431,7 +431,7 @@ class VPC:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '020', 'VPC', 'VPC', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_021(self):
         try:
@@ -442,7 +442,7 @@ class VPC:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '021', 'VPC', 'VPC', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_022(self):
         try:
@@ -462,7 +462,7 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '022', vpc['VpcId'], vpc['VpcId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def vpc_023(self):
         try:
@@ -482,5 +482,5 @@ class VPC:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'VPC', '023', subnet['SubnetId'], subnet['SubnetArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 

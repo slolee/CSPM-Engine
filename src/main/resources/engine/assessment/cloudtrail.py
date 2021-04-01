@@ -40,7 +40,7 @@ class CloudTrail:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '001', 'CloudTrail', 'CloudTrail', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudtrail_002(self):
         try:
@@ -59,7 +59,7 @@ class CloudTrail:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '002', trail['Name'], trail['TrailARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudtrail_003(self):
         try:
@@ -87,7 +87,7 @@ class CloudTrail:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '003', trail['Name'], trail['TrailARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudtrail_004(self):
         try:
@@ -106,7 +106,7 @@ class CloudTrail:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '004', trail['Name'], trail['TrailARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudtrail_005(self):
         try:
@@ -126,7 +126,7 @@ class CloudTrail:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '005', trail['Name'], trail['TrailARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudtrail_006(self):
         try:
@@ -156,7 +156,7 @@ class CloudTrail:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '006', trail['Name'], trail['TrailARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudtrail_007(self):
         try:
@@ -226,7 +226,7 @@ class CloudTrail:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '007', trail['Name'], trail['TrailARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudtrail_008(self):
         try:
@@ -265,7 +265,7 @@ class CloudTrail:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '008', trail['Name'], trail['TrailARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudtrail_009(self):
         try:
@@ -285,7 +285,7 @@ class CloudTrail:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '009', trail['Name'], trail['TrailARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def cloudtrail_010(self):
         try:
@@ -305,4 +305,4 @@ class CloudTrail:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'CloudTrail', '010', trail['Name'], trail['TrailARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)

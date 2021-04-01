@@ -36,7 +36,7 @@ class Lambda:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'Lambda', '001', function['FunctionName'], function['FunctionArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def lambda_002(self):
         try:
@@ -76,7 +76,7 @@ class Lambda:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'Lambda', '002', function['FunctionName'], function['FunctionArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def lambda_003(self):
         try:
@@ -106,7 +106,7 @@ class Lambda:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'Lambda', '003', function['FunctionName'], function['FunctionArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def lambda_004(self):
         try:
@@ -135,7 +135,7 @@ class Lambda:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'Lambda', '004', function['FunctionName'], function['FunctionArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def lambda_005(self):
         try:
@@ -150,7 +150,7 @@ class Lambda:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'Lambda', '005', 'Lambda', 'Lambda', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def lambda_006(self):
         try:
@@ -169,7 +169,7 @@ class Lambda:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'Lambda', '006', function['FunctionName'], function['FunctionArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def lambda_007(self):
         try:
@@ -190,7 +190,7 @@ class Lambda:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'Lambda', '007', function['FunctionName'], function['FunctionArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def lambda_008(self):
         try:
@@ -209,4 +209,4 @@ class Lambda:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'Lambda', '008', function['FunctionName'], function['FunctionArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)

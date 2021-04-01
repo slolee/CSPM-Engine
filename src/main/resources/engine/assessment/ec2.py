@@ -39,7 +39,7 @@ class EC2:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '001', image['Name'], image['ImageId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_002(self):
         try:
@@ -72,7 +72,7 @@ class EC2:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '002', instance['InstanceId'], instance['InstanceId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_003(self):
         try:
@@ -105,7 +105,7 @@ class EC2:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '003', elbv2['LoadBalancerName'], elbv2['LoadBalancerArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_004(self):
         try:
@@ -125,7 +125,7 @@ class EC2:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '004', instance['InstanceId'], instance['InstanceId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_005(self):
         try:
@@ -150,7 +150,7 @@ class EC2:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '005', launch_configuration['LaunchConfigurationName'], launch_configuration['LaunchConfigurationARN'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_006(self):
         try:
@@ -170,7 +170,7 @@ class EC2:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '006', instance['InstanceId'], instance['InstanceId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_007(self):
         try:
@@ -216,7 +216,7 @@ class EC2:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '007', launch_template['LaunchTemplateName'], launch_template['LaunchTemplateId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_008(self):
         try:
@@ -236,7 +236,7 @@ class EC2:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '008', instance['InstanceId'], instance['InstanceId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_009(self):
         try:
@@ -270,7 +270,7 @@ class EC2:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '009', instance['InstanceId'], instance['InstanceId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_010(self):
         try:
@@ -299,7 +299,7 @@ class EC2:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '010', instance['InstanceId'], instance['InstanceId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_011(self):
         try:
@@ -330,7 +330,7 @@ class EC2:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '011', launch_template['LaunchTemplateName'], launch_template['LaunchTemplateId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_12_util(self, data, security_groups, name):
         for launch_configuration in low_data.launch_configurations:
@@ -383,7 +383,7 @@ class EC2:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '012', elbv2['LoadBalancerName'], elbv2['LoadBalancerArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_013(self):
         try:
@@ -418,7 +418,7 @@ class EC2:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '013', load_balancer['LoadBalancerName'], load_balancer['LoadBalancerArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ec2_014(self):
         try:
@@ -437,7 +437,7 @@ class EC2:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EC2', '014', image['Name'], image['ImageId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
 
 

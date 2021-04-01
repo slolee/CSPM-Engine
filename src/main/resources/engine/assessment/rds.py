@@ -52,7 +52,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '001', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_002(self):
         try:
@@ -71,7 +71,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '002', db_snapshot['DBSnapshotIdentifier'], db_snapshot['DBSnapshotArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_003(self):
         try:
@@ -88,7 +88,7 @@ class RDS:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '003', 'RDS', 'RDS', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_004(self):
         try:
@@ -109,7 +109,7 @@ class RDS:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '004', 'RDS', 'RDS', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_005(self):
         try:
@@ -130,7 +130,7 @@ class RDS:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '005', 'RDS', 'RDS', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_006(self):
         try:
@@ -150,7 +150,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '006', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_007(self):
         try:
@@ -170,7 +170,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '007', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_008(self):
         try:
@@ -190,7 +190,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '008', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_009(self):
         try:
@@ -227,7 +227,7 @@ class RDS:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '009', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_010(self):
         try:
@@ -247,7 +247,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '010', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_011(self):
         try:
@@ -264,7 +264,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '011', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_012(self):
         try:
@@ -299,7 +299,7 @@ class RDS:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '012', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_013(self):
         try:
@@ -332,7 +332,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '013', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     # aurora-mysql, mysql, mariadb, oracle-ee, oracle-se, oracle-se1, oracle-se2, sqlserver-ee, sqlserver-web, sqlserver-se, sqlserver-ex : admin
     # aurora-postgres, postgres : postgres
@@ -354,7 +354,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '014', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_015(self):
         try:
@@ -404,7 +404,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '015', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_016(self):
         try:
@@ -483,7 +483,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '016', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_017(self):
         try:
@@ -542,7 +542,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '014', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_018(self):
         try:
@@ -562,7 +562,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '018', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_019(self):
         try:
@@ -583,7 +583,7 @@ class RDS:
                     execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '019', db_cluster['DBClusterIdentifier'], db_cluster['DBClusterArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_020(self):
         try:
@@ -632,7 +632,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '020', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_021(self):
         try:
@@ -652,7 +652,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '021', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     # 기존 22번 이전 세대의 인스턴스 클래스가 엄청엄청많고, 엔진마다 다른데 어떻게 처리할지...
     def rds_022(self):
@@ -675,7 +675,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '022', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_023(self):
         try:
@@ -699,7 +699,7 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '023', db_instance['DBInstanceIdentifier'], db_instance['DBInstanceArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def rds_024(self):
         try:
@@ -718,5 +718,5 @@ class RDS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'RDS', '024', db_snapshot['DBSnapshotIdentifier'], db_snapshot['DBSnapshotArn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 

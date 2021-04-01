@@ -35,7 +35,7 @@ class EBS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EBS', '001', snapshot['SnapshotId'], snapshot['SnapshotId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ebs_002(self):
         try:
@@ -54,14 +54,14 @@ class EBS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EBS', '002', volume['VolumeId'], volume['VolumeId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ebs_003(self):
         try:
             print('[EBS_003] EBS 볼륨이 최대 7일마다 스냅샷을 생성하도록 설정되어 있는지 확인하시오.')
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ebs_004(self):
         try:
@@ -80,7 +80,7 @@ class EBS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EBS', '004', volume['VolumeId'], volume['VolumeId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ebs_005(self):
         try:
@@ -103,7 +103,7 @@ class EBS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EBS', '005', volume['VolumeId'], volume['VolumeId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ebs_006(self):
         try:
@@ -123,7 +123,7 @@ class EBS:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EBS', '006', snapshot['SnapshotId'], snapshot['SnapshotId'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def ebs_007(self):
         try:
@@ -146,6 +146,6 @@ class EBS:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'EBS', '007', 'EBS', 'EBS', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
 

@@ -78,7 +78,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '001', root_credential['user'], root_credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_002(self):
         try:
@@ -99,7 +99,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '002', root_credential['user'], root_credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_003(self):
         try:
@@ -123,7 +123,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '003', root_credential['user'], root_credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_004(self):
         try:
@@ -144,7 +144,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '004', root_credential['user'], root_credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_005(self):
         try:
@@ -164,7 +164,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '005', root_credential['user'], root_credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_006(self):
         try:
@@ -185,7 +185,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '006', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_007(self):
         try:
@@ -214,7 +214,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '007', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_008(self):
         try:
@@ -225,7 +225,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '008', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_009(self):
         try:
@@ -236,7 +236,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '009', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_010(self):
         try:
@@ -253,7 +253,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '010', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_011(self):
         try:
@@ -279,7 +279,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '011', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_012(self):
         try:
@@ -299,7 +299,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '012', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_013(self):
         try:
@@ -318,7 +318,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '013', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_014(self):
         try:
@@ -340,7 +340,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '014', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_016(self):
         try:
@@ -366,7 +366,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '016', credential['user'], credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_017(self):
         try:
@@ -406,7 +406,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '017', credential['user'], credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_018(self):
         try:
@@ -431,7 +431,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '018', credential['user'], credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_019(self):
         try:
@@ -455,7 +455,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '019', credential['user'], credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_020(self):
         try:
@@ -474,7 +474,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '020', credential['user'], credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_021(self):
         try:
@@ -494,7 +494,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '021', user['UserName'], user['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_022(self):
         try:
@@ -513,7 +513,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '022', user['UserName'], user['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_023(self):
         try:
@@ -534,7 +534,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '023', credential['user'], credential['arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_024(self):
         try:
@@ -552,7 +552,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '024', user['UserName'], user['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_025(self):
         try:
@@ -584,7 +584,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '025', user['UserName'], user['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_026(self):
         try:
@@ -627,7 +627,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '026', role['RoleName'], role['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_027(self):
         try:
@@ -648,7 +648,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '027', group['GroupName'], group['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_028(self):
         try:
@@ -661,7 +661,7 @@ class IAM:
             # 구현 방법에 대해 이야기
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_029(self):
         try:
@@ -689,7 +689,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '029', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_030(self):
         try:
@@ -716,7 +716,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '030', policy['PolicyName'], policy['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_031(self):
         try:
@@ -790,7 +790,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '031', role['RoleName'], role['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_032(self):
         try:
@@ -811,7 +811,7 @@ class IAM:
             execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '032', 'IAM', 'IAM', check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_033(self):
         try:
@@ -825,7 +825,7 @@ class IAM:
             # 28번과 같은 고민..
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_034(self): # 체크필요
         try:
@@ -847,7 +847,7 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '034', server_certificate['ServerCertificateMetadata']['ServerCertificateName'], server_certificate['ServerCertificateMetadata']['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
 
     def iam_035(self):
         try:
@@ -866,4 +866,4 @@ class IAM:
                 execute_insert_assessment_result_sql((low_data.diagnosis_id, 'IAM', '035', server_certificate['ServerCertificateMetadata']['ServerCertificateName'], server_certificate['ServerCertificateMetadata']['Arn'], check, str(data)))
             print('[+] Complete!')
         except Exception as e:
-            print('[!] Error : ' + e)
+            print('[!] Error :', e)
