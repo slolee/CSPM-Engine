@@ -35,5 +35,5 @@ public class AssessmentResult {
     private boolean interview;
 
     @Lob
-    private String interview_content;
+    private String interviewContent;
 }

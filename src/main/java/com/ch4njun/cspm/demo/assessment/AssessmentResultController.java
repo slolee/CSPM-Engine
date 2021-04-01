@@ -106,7 +106,7 @@ public class AssessmentResultController {
         AssessmentResult assessmentResult_after = assessmentResult_original.get();
         assessmentResult_after.setResult(assessmentResult.getResult());
         assessmentResult_after.setInterview(assessmentResult.isInterview());
-        assessmentResult_after.setInterview_content(assessmentResult.getInterview_content());
+        assessmentResult_after.setInterviewContent(assessmentResult.getInterviewContent());
 
         return assessmentResultRepository.save(assessmentResult_after);
     }
