@@ -21,6 +21,7 @@ public class HistoryController {
 
     @Transactional
     @DeleteMapping("")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void deleteHistories(@RequestBody HistoryDeleteRequestBody body) {
         for (String historyId : body.getHistoriesId()) {
             if (historyRepository.findHistoryByHistoryId(historyId) == null)

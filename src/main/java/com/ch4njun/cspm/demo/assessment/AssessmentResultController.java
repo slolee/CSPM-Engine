@@ -70,6 +70,7 @@ public class AssessmentResultController {
     }
 
     @PostMapping("")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Message run(@RequestBody AssessmentResultPostRequestBody body) {
         if (historyRepository.findHistoryByHistoryId(body.getHistoryId()) != null) {
             throw new HistoryAlreadyExistsException(String.format("History ID[%s] already exists", body.getHistoryId()));
@@ -89,7 +90,6 @@ public class AssessmentResultController {
             History history = historyRepository.findHistoryByHistoryId(body.getHistoryId());
             history.setStatus("Complete");
             historyRepository.save(history);
-
             return new Message("Complete", output);
         }catch (Exception e) {
             System.out.println(e.getMessage());
@@ -98,6 +98,7 @@ public class AssessmentResultController {
     }
 
     @PutMapping("/{id}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public AssessmentResult interview(@PathVariable int id, @RequestBody AssessmentResult assessmentResult) {
         Optional<AssessmentResult> assessmentResult_original = assessmentResultRepository.findById(id);
         if (assessmentResult_original.isEmpty()) {

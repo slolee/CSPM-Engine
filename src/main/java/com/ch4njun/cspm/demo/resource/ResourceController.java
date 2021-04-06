@@ -38,6 +38,7 @@ public class ResourceController {
     }
 
     @PostMapping("")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @Transactional
     public void run(@RequestBody ResourcePostRequestBody body) {
         resourceRepository.deleteResourcesByAccessKey(body.getAccessKey());
@@ -58,6 +59,7 @@ public class ResourceController {
     }
 
     @DeleteMapping("")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @Transactional
     public void deleteResources(@RequestBody ResourceDeleteRequestBody body) {
         for (String accessKey : body.getAccessKeys()) {
