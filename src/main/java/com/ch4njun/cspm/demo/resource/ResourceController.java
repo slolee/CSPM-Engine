@@ -15,6 +15,7 @@ public class ResourceController {
     private ResourceRepository resourceRepository;
 
     @GetMapping("")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public List<Resource> retrieveResources(@RequestParam String accessKey,
                                             @RequestParam(required = false) String service) {
 
@@ -28,6 +29,7 @@ public class ResourceController {
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Resource retrieveResource(@PathVariable int id) {
         Optional<Resource> resource = resourceRepository.findById(id);
         if (resource.isEmpty()) {

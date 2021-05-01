@@ -22,6 +22,7 @@ public class AssessmentResultController {
     private HistoryRepository historyRepository;
 
     @GetMapping("")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public List<AssessmentResult> retrieveAssessmentResults(@RequestParam(required = false) String historyId,
                                                             @RequestParam(required = false) String resourceId,
                                                             @RequestParam(required = false) String result) {
@@ -60,6 +61,7 @@ public class AssessmentResultController {
     }
 
     @GetMapping("/{id}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public AssessmentResult retrieveAssessmentResult(@PathVariable int id) {
         Optional<AssessmentResult> assessmentResult = assessmentResultRepository.findById(id);
         if (assessmentResult.isEmpty()) {

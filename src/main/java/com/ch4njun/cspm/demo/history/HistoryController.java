@@ -11,6 +11,7 @@ public class HistoryController {
     private HistoryRepository historyRepository;
 
     @GetMapping("/{historyId}")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public History retrieveHistory(@PathVariable String historyId) {
         History history = historyRepository.findHistoryByHistoryId(historyId);
         if (history == null) {
