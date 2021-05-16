@@ -1,5 +1,6 @@
 package com.ch4njun.cspm.demo.history;
 
+import com.ch4njun.cspm.demo.assessment.AssessmentResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 public class HistoryController {
     @Autowired
     private HistoryRepository historyRepository;
+    @Autowired
+    private AssessmentResultRepository assessmentResultRepository;
 
     @GetMapping("/{historyId}")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -25,9 +28,19 @@ public class HistoryController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public void deleteHistories(@RequestBody HistoryDeleteRequestBody body) {
         for (String historyId : body.getHistoriesId()) {
-            if (historyRepository.findHistoryByHistoryId(historyId) == null)
+            History deleteHistory = historyRepository.findHistoryByHistoryId(historyId);
+            if (deleteHistory == null)
                 continue;
             historyRepository.deleteHistoryByHistoryId(historyId);
+            assessmentResultRepository.deleteByHistory(deleteHistory);
         }
+    }
+
+    @Transactional
+    @DeleteMapping("/all")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    public void deleteHistoriesAll() {
+        historyRepository.deleteAll();
+        assessmentResultRepository.deleteAll();
     }
 }

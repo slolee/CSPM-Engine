@@ -344,8 +344,11 @@ class LowData:
             self.buckets = list_buckets['Buckets']
         if not self.buckets_policy:
             for bucket in self.buckets:
-                get_bucket_policy = client.s3_client.get_bucket_policy(Bucket=bucket['Name'])
-                self.buckets_policy[bucket['Name']] = get_bucket_policy['Policy']
+                try:
+                    get_bucket_policy = client.s3_client.get_bucket_policy(Bucket=bucket['Name'])
+                    self.buckets_policy[bucket['Name']] = get_bucket_policy['Policy']
+                except ClientError as e:
+                    self.buckets_policy[bucket['Name']] = []
         if not self.buckets_acl:
             for bucket in self.buckets:
                 get_bucket_acl = client.s3_client.get_bucket_acl(Bucket=bucket['Name'])

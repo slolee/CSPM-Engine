@@ -15,4 +15,5 @@ public interface AssessmentResultRepository extends JpaRepository<AssessmentResu
     List<AssessmentResult> findAssessmentResultsByHistory(History history);
     List<AssessmentResult> findAssessmentResultsByHistoryAndResourceId(History history, String ResourceId);
     List<AssessmentResult> findAssessmentResultsByResourceId(String ResourceId);
+    void deleteByHistory(History history);
 }

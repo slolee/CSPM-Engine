@@ -32,6 +32,7 @@ public class ResourceController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public Resource retrieveResource(@PathVariable int id) {
         Optional<Resource> resource = resourceRepository.findById(id);
+
         if (resource.isEmpty()) {
             return null;
         }
@@ -69,5 +70,12 @@ public class ResourceController {
                 continue;
             resourceRepository.deleteResourcesByAccessKey(accessKey);
         }
+    }
+
+    @DeleteMapping("/all")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @Transactional
+    public void deleteResourcesAll() {
+        resourceRepository.deleteAll();
     }
 }
