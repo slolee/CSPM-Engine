@@ -1,6 +1,7 @@
-package com.ch4njun.cspm.demo.assessment;
+package com.ch4njun.cspm.demo.repository;
 
-import com.ch4njun.cspm.demo.history.History;
+import com.ch4njun.cspm.demo.model.History;
+import com.ch4njun.cspm.demo.model.AssessmentResult;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package com.ch4njun.cspm.demo.history;
+package com.ch4njun.cspm.demo.model;
 
-import com.ch4njun.cspm.demo.assessment.AssessmentResult;
+import com.ch4njun.cspm.demo.model.AssessmentResult;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,11 +14,6 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 public class History {
-    public History(String historyId, String status) {
-        this.historyId = historyId;
-        this.status = status;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore

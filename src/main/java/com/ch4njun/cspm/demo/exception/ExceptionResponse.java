@@ -1,4 +1,4 @@
-package com.ch4njun.cspm.demo.exeception;
+package com.ch4njun.cspm.demo.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.ch4njun.cspm.demo.resource;
+package com.ch4njun.cspm.demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

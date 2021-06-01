@@ -1,6 +1,5 @@
-package com.ch4njun.cspm.demo.assessment;
+package com.ch4njun.cspm.demo.model;
 
-import com.ch4njun.cspm.demo.history.History;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

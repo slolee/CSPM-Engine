@@ -1,8 +1,8 @@
-package com.ch4njun.cspm.demo.resource;
+package com.ch4njun.cspm.demo.repository;
 
+import com.ch4njun.cspm.demo.model.Resource;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

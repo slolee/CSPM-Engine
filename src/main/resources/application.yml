@@ -10,6 +10,7 @@ spring:
     username: ch4njun
     password: cks14579!
     driver-class-name: com.mysql.jdbc.Driver
+
   jpa:
     show-sql: true
     generate-ddl: true
