@@ -12,7 +12,7 @@ CSPM은 Cloud Security Posture Management의 약자로 클라우드에서 존재
 ![1](https://user-images.githubusercontent.com/38906956/120291453-4761b700-c2fe-11eb-859d-a077daf18bc9.png)
 <br><br>
 
-위 구조도에서 이 프로젝트는 Engine Server에 해당합니다.
+이 프로젝트는 위 구조도에서 Engine Server에 해당합니다.
 <br><br>
 
 # Engine Server
