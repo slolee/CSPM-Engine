@@ -40,7 +40,7 @@ public class AssessmentResultController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<MessageDto> run(@RequestBody AssessmentResultDto.Run runDto) {
         MessageDto messageDto = assessmentResultService.runAssessmentScript(runDto);
-        return new ResponseEntity<>(messageDto, HttpStatus.OK);
+        return new ResponseEntity<>(messageDto, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
