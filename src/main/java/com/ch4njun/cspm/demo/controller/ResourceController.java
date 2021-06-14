@@ -18,7 +18,6 @@ public class ResourceController {
     private ResourceService resourceService;
 
     @GetMapping("")
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<List<ResourceDto.Response>> retrieveResources(@RequestParam String accessKey,
                                                            @RequestParam(required = false) String service) {
         ResourceDto.GetRequest requestDto = new ResourceDto.GetRequest(accessKey, service);
@@ -27,14 +26,12 @@ public class ResourceController {
     }
 
     @GetMapping("/{id}")
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     public ResponseEntity<ResourceDto.Response> retrieveResource(@PathVariable int id) {
         ResourceDto.Response responseDto = resourceService.findResourceById(id);
         return new ResponseEntity<>(responseDto, HttpStatus.OK);
     }
 
     @PostMapping("")
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @Transactional
     public ResponseEntity<MessageDto> run(@RequestBody ResourceDto.Run runDto) {
         MessageDto messageDto = resourceService.runResourceScript(runDto);
@@ -43,7 +40,6 @@ public class ResourceController {
     }
 
     @DeleteMapping("")
-    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @Transactional
     public ResponseEntity<Void> deleteResources(@RequestBody ResourceDto.DeleteRequest requestDto) {
         resourceService.deleteResourcesByAccessKey(requestDto);
