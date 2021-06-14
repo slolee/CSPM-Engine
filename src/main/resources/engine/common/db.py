@@ -25,7 +25,7 @@ def commit():
 
 user = 'ch4njun'
 password = 'cks14579!'
-host = 'ch4njun-database-2.ckjufvaxbvyp.ap-northeast-2.rds.amazonaws.com'
+host = 'ch4njun-cspm.ckjufvaxbvyp.ap-northeast-2.rds.amazonaws.com'
 db = 'cspm'
 charset = 'utf8'
 
