@@ -2,6 +2,7 @@ import pymysql
 
 def execute_insert_assessment_result_sql(assessment_result):
     global cur, conn
+    print(assessment_result)
     cur.execute('insert into assessment_result(history_id, service, chk_index, resource_name, resource_id, result, raw_data) values(%s, %s, %s, %s, %s, %s, %s)', assessment_result)
 
 def execute_insert_history_sql(history):
@@ -21,9 +22,9 @@ def commit():
     global conn
     conn.commit()
 
-user = 'ch4njun'
-password = 'cks14579!'
-host = 'terraform-20210615050925589900000001.ckjufvaxbvyp.ap-northeast-2.rds.amazonaws.com'
+user = '[ID]'
+password = '[PW]'
+host = '[IP]'
 db = 'cspm'
 charset = 'utf8'
 

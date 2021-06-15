@@ -3,6 +3,7 @@ package com.ch4njun.cspm.demo.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -31,6 +32,7 @@ public class AssessmentResult {
     @Lob
     private String rawData;
 
+    @ColumnDefault("false")
     private boolean interview;
 
     @Lob
