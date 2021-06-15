@@ -23,7 +23,7 @@ def commit():
 
 user = 'ch4njun'
 password = 'cks14579!'
-host = '127.0.0.1'
+host = 'terraform-20210615050925589900000001.ckjufvaxbvyp.ap-northeast-2.rds.amazonaws.com'
 db = 'cspm'
 charset = 'utf8'
 

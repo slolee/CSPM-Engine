@@ -2,7 +2,7 @@ import sys, os
 if sys.platform.startswith('win'):
     sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 elif sys.platform.startswith('linux'):
-    sys.path.append(sys.path[1] + '/src/main/resources/engine')
+    sys.path.append(os.path.abspath(__file__).split('/assessment/assessment_main.py')[0])
 from iam import *
 from vpc import *
 from cloudtrail import *
