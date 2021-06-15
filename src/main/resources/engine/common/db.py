@@ -21,8 +21,8 @@ def commit():
     global conn
     conn.commit()
 
-user = 'root'
-password = '1544'
+user = 'ch4njun'
+password = 'cks14579!'
 host = '127.0.0.1'
 db = 'cspm'
 charset = 'utf8'

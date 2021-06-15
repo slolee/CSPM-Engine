@@ -6,9 +6,9 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1/cspm?createDatabaseIfNotExist = true
-    username: root
-    password: 1544
+    url: jdbc:mysql://127.0.0.1/cspm?createDatabaseIfNotExist=true
+    username: ch4njun
+    password: cks14579!
     driver-class-name: com.mysql.jdbc.Driver
 
   jpa:
