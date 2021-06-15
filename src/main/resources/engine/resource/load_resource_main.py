@@ -1,5 +1,9 @@
 import sys, os
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+if sys.platform.startswith('win'):
+    sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+elif sys.platform.startswith('linux'):
+    sys.path.append(sys.path[1] + '/src/main/resources/engine')
+
 from common.client import client
 from resource.load_resource import load_resource
 from common.db import commit

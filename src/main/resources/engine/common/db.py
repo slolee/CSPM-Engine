@@ -1,6 +1,5 @@
 import pymysql
 
-
 def execute_insert_assessment_result_sql(assessment_result):
     global cur, conn
     cur.execute('insert into assessment_result(history_id, service, chk_index, resource_name, resource_id, result, raw_data) values(%s, %s, %s, %s, %s, %s, %s)', assessment_result)
@@ -22,10 +21,9 @@ def commit():
     global conn
     conn.commit()
 
-
-user = 'ch4njun'
-password = 'cks14579!'
-host = 'ch4njun-cspm.ckjufvaxbvyp.ap-northeast-2.rds.amazonaws.com'
+user = 'root'
+password = '1544'
+host = '127.0.0.1'
 db = 'cspm'
 charset = 'utf8'
 
