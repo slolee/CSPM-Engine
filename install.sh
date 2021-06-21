@@ -11,6 +11,8 @@ rm -rf openjdk-15.0.2_linux-x64_bin.tar.gz
 echo 'export JAVA_HOME=/home/ec2-user/jdk-15.0.2' >> ~/.bashrc
 source ~/.bashrc
 
+sudo yum -y install git
+git clone https://github.com/slolee/CSPM-Engine
 cd CSPM-Engine
 
 # Script로 인자받아서 하면될듯?
