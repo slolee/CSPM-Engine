@@ -12,3 +12,5 @@ sed -i 's/\[IP\]/'$3'/g' src/main/resources/application.yml
 sed -i 's/\[ID\]/'$1'/g' src/main/resources/engine/common/db.py
 sed -i 's/\[PW\]/'$2'/g' src/main/resources/engine/common/db.py
 sed -i 's/\[IP\]/'$3'/g' src/main/resources/engine/common/db.py
+
+sed -i -e 's/\r$//' run.sh
