@@ -20,7 +20,7 @@ CSPM은 Cloud Security Posture Management의 약자로 클라우드에서 존재
 Engine Server는 다음과 같은 API 항목을 제공합니다. (Swagger)
 
 ![2](https://user-images.githubusercontent.com/38906956/120291856-b93a0080-c2fe-11eb-9c3c-dcd4ddd5a045.png)
-<i> 위 사진은 http://[Engine-Server-IP]/swagger-ui/index.html 에서 확인 가능합니다.</i>
+<i> 위 사진은 서버를 올린  http://[Engine-Server-IP]/swagger-ui/index.html 에서 확인 가능합니다.</i>
 <br><br>
 
 ### <b>GET /assessment-results</b>
